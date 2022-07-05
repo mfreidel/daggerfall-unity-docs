@@ -1,5 +1,12 @@
 # Mod Builder
 
+The Mod Builder tool allows you to configure the fundamental properties of your
+mod and package it into a `.dfmod` file.
+
+![Mod Builder as it appears inside Unity]( https://www.dfworkshop.net/wp-content/uploads/2016/05/editorwindow.png )
+
+## Create
+
 Inside the Unity Editor, go to Assets/Game/Mods and create a subfolder for your mod, then open Daggerfall Workshop > Mod Builder, choose a title and save the manifest file inside the folder from previous point (i.e. Assets/Game/Mods/Example/Example.dfmod.json).
 
 If the mod contains scripts, a static intro point is needed to instantiate one of them and effectively start the mod.

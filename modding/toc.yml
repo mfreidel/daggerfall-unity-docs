@@ -1,0 +1,5 @@
+- name: Modding Home
+  href: index.md
+  items:
+  - name: Scripting
+    href: Scripting.md

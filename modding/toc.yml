@@ -1,5 +1,40 @@
-- name: Modding Home
-  href: index.md
+- name: Mod Builder
+  href: ModBuilder.md
   items:
   - name: Scripting
     href: Scripting.md
+  - name: Mod Settings
+    href: ModSettings.md
+  - name: Mod Data
+    href: ModData.md
+  - name: Localization
+    href: ModLocalization.md
+  - name: Asset Loading
+    href: ModAssetLoading.md
+  - name: Game Resources
+    href: ModGameResources.md
+  - name: Mods Interaction
+    href: ModsInteraction.md
+
+- name: Import Assets
+  href: AssetsImport.md
+  items:
+  - name: Models And Flats
+    href: AssetsModelsAndFlats.md
+  - name: Textures
+    href: AssetsTextures.md
+  - name: Sound and Movies
+    href: AssetsSoundAndMovies.md
+  - name: Books
+    href: AssetsBooks.md
+  - name: Additional Resources
+    href: AssetsAdditional.md
+
+- name: Quest Writing
+  href: QuestWriting.md
+
+- name: Tutorials
+  href: Tutorials.md
+  items:
+  - name: Getting Started
+    href: TutGettingStarted.md

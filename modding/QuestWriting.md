@@ -1,0 +1,3 @@
+# Quest Writing
+
+PLACEHOLDER

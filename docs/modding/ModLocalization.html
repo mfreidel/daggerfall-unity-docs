@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Localization </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Localization ">
+    <meta name="generator" content="docfx 2.59.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="localization">Localization</h1>
+
+<p>Localized text content can be provided by including csv-like tables with the following naming:</p>
+<ul>
+<li><strong>textdatabase.txt</strong></li>
+<li><strong>[<identifier>]textdatabase.txt</identifier></strong> (i.e. [en]textdatabase.txt)</li>
+<li><strong>[<identifier>(<guid>)]textdatabase.txt</guid></identifier></strong> (i.e. [fr(7e0510a9-be7d-4fd4-9c89-ed2f2b2e5fb3)]textdatabase.txt))</li>
+<li><strong>mod_modname.txt</strong> inside <em>StreamingAssets/Text</em></li>
+</ul>
+<h2 id="localize-settings">Localize Settings</h2>
+<p>The file <strong>settings.json</strong> bundled with a mod provides informations used by the mod manager to draw controls in the mod settings window and store values to a local file. This includes setting names and descriptions/tooltips. These text string are seked automatically in the language table using the following patterns:</p>
+<pre><code>Mod.Description
+Settings.SectionName.Name
+Settings.SectionName.Description
+Settings.SectionName.KeyName.Name
+Settings.SectionName.KeyName.Description
+Presets.PresetTitle.Title
+Presets.PresetTitle.Description
+</code></pre>
+<p>If a key is missing, the default value from <strong>settings.json</strong> is used. This means there is no need to provide an english table. No support is required from individual mods, this is all managed by the mod manager.</p>
+<blockquote>
+<p>The mod settings editor can automatically export an english table that can be given to translators for localization.</p>
+</blockquote>
+<h2 id="localize-additional-content">Localize Additional Content</h2>
+<p>The Mod instance includes a method called <strong>Localize()</strong> which can be used to seek additional localized strings from the text table. The key can be a string or a succession of strings wich are concatenated.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/ModLocalization.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

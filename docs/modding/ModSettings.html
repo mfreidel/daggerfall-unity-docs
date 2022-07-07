@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Mod Settings </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Mod Settings ">
+    <meta name="generator" content="docfx 2.59.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="mod-settings">Mod Settings</h1>
+
+<p>Mod settings can be created or changed with the UI settings editor. Open it from the the <strong>tools</strong> menu and select a folder; for example <code>Addons/ModName/</code>.</p>
+<p><a href="https://www.dfworkshop.net/wp-content/uploads/2018/09/modSettingsEditor.png"><img src="https://www.dfworkshop.net/wp-content/uploads/2018/09/modSettingsEditor.png" alt=""></a></p>
+<table>
+<thead>
+<tr>
+<th>UI Control</th>
+<th>C# Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>checkbox</td>
+<td>boolean</td>
+<td>A flag that can be set or unset</td>
+</tr>
+<tr>
+<td>multiplechoice</td>
+<td>int</td>
+<td>Index of selected choice</td>
+</tr>
+<tr>
+<td>int slider</td>
+<td>int</td>
+<td>An integer number in a range</td>
+</tr>
+<tr>
+<td>float slider</td>
+<td>float</td>
+<td>A floating point number in a range</td>
+</tr>
+<tr>
+<td>int tuple</td>
+<td>Tuple&lt;int, int&gt;</td>
+<td>Two integer numbers</td>
+</tr>
+<tr>
+<td>float tuple</td>
+<td>Tuple&lt;float, float&gt;</td>
+<td>Two floating point numbers</td>
+</tr>
+<tr>
+<td>textbox</td>
+<td>string</td>
+<td>A raw string</td>
+</tr>
+<tr>
+<td>color picker</td>
+<td>Color32</td>
+<td>A color</td>
+</tr>
+</tbody>
+</table>
+<h2 id="types-available-for-mod-settings">Types available for mod settings.</h2>
+<p>Settings consist of a list of options grouped inside sections. Each section has a name, an optional description and a <em>advanced</em> flag. Each option has a name, an optional description, a type, a default value and a number of other values depending on type. The type determines how the option is proposed to the player with a in-game UI. For example a boolean is a simple checkbox while a number is drawn as a slider in the requested range.</p>
+<p>The end result is saved in a file named <em><strong>settings.json</strong></em> inside the current folder. This file needs to be bundled inside the mod.</p>
+<p>Settings can be retrived in game from the mod instance:</p>
+<pre><code>var settings = mod.GetSettings();
+int number = settings.GetValue&lt;int&gt;(&quot;section&quot;, &quot;key&quot;);
+</code></pre>
+<p>It is possible to benefit of live changes to mod settings by setting the callback <strong>Mod.LoadSettingsCallback</strong>.</p>
+<pre><code>private void Awake()
+{
+    mod.LoadSettingsCallback \= LoadSettings;
+    mod.LoadSettings();
+    mod.IsReady \= true;
+}
+
+private void LoadSettings(ModSettings settings, ModSettingsChange change)
+{
+    if (change.HasChanged(&quot;Foo&quot;))
+    {
+        var number \= settings.GetValue&lt;int\&gt;(&quot;Foo&quot;, &quot;Number&quot;);
+        var color \= settings.GetValue&lt;Color32\&gt;(&quot;Foo&quot;, &quot;Color&quot;);
+    }
+
+    if (change.HasChanged(&quot;Bar&quot;, &quot;Text&quot;))
+    {
+        var text \= settings.GetValue&lt;string\&gt;(&quot;Bar&quot;, &quot;Text&quot;);
+    }
+}
+</code></pre>
+<h2 id="presets">Presets</h2>
+<p>A preset is a group of values for a given number of settings, which can be provided by the mod developer or created by players and shared with the community. Presets are identified by a title and a description.</p>
+<ul>
+<li>Presets created from the mod settings editor are saved in a file named <strong><em>presets.json</em></strong> inside the current folder. This file needs to be bundled inside the mod.</li>
+<li>Presets created from the in-game UI are saved to <em>PersistentDataPath/Mods/GameData/GUID/modpresets.json</em> (<em>EditorData</em> when testing with the Unity Editor). Previously they were stored  in a file named <strong><em>modFileName_presets.json</em></strong>, where <strong><em>modFileName</em></strong> is the name excluding the extension of <strong><em>modFileName.dfmod</em></strong>, inside the folder <em>StreamingAssets/Mods</em>. Existing presets are moved automatically to new position.</li>
+<li>Presets can also be created by players and shared; the same functionality allows mod developers to provide presets for other mods by placing json files inside <em>StreamingAssets/Presets/TargetModFileName</em> or <em>%ModRoot%/Assets/Presets/TargetModFileName</em>.  Read the <strong>Share Presets</strong> section below for more details.</li>
+<li>Legacy support is currently also provided for files named <strong><em>modFileName_presets_name.json</em></strong>, where <strong><em>name</em></strong> is an unique identifier, and placed in the same folder of second point. Such file contains a list of one or more presets, each one with a title and description. This functionality is deprecated and will be eventually removed.</li>
+</ul>
+<h3 id="share-presets">Share presets</h3>
+<p>The presets creator window has a button labelled <strong>Export</strong>. When you click on it the selected preset is exported to <em>%PersistentDataPath%/Mods/ExportedPresets/%Mod__FileName%</em> (i.e. <em>C:/Users/ExampleUserName/AppData/Local/Daggerfall Workshop/Daggerfall Unity/Mods/ExportedPresets/ExampleModName/ExamplePresetName.json</em>).</p>
+<p>Presets can be imported from <em>StreamingAssets/Presets/%ModFileName%/</em> (or <em>%ModRoot%/Assets/Presets/%ModFileName%/</em> from a mod). For example <em>StreamingAssets/Presets/ExampleMod/ExamplePreset.json</em>.</p>
+<h2 id="local-settings">Local settings</h2>
+<p>Local mod settings are stored inside <em>PersistentDataPath/Mods/GameData/GUID/modsettings.json</em> (<em>EditorData</em> when testing with the Unity Editor). Previously, they were saved alongside mod files in the folder <em>StreamingAssets/Mods</em> with the name <strong><em>modFileName.json</em></strong>, where <strong><em>modFileName</em></strong> is the name excluding the extension of <em><strong>modFileName.dfmod</strong></em>. Existing settings are moved automatically to new position.</p>
+<h2 id="versioning">Versioning</h2>
+<p>Mod settings can provide a version number which is used to validate presets and
+local settings. Outdated presets can still be used but a warning is shown in the
+preset selection list, while local settings are deleted and replaced with a
+fresh, updated, copy. Mod settings version is different than mod version becausea mod can benefits of updates that don’t require wiping local settings.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/ModSettings.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class DaggerfallFont
    ">
-    <meta name="generator" content="docfx 2.58.4.0">
+    <meta name="generator" content="docfx 2.59.2.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -1295,6 +1295,38 @@ Current implementation will load a TextMeshPro 2.0.x font asset directly for SDF
   </table>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
+    <a href="https://github.com/TheLacus/daggerfall-unity-docs/new/master/apidoc/new?filename=DaggerfallWorkshop_Game_UserInterface_DaggerfallFont_GetUnicodes.md&amp;value=---%0Auid%3A%20DaggerfallWorkshop.Game.UserInterface.DaggerfallFont.GetUnicodes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Interkarma/daggerfall-unity/blob/master/Assets/Scripts/Game/UserInterface/DaggerfallFont.cs/#L522">View Source</a>
+  </span>
+  <a id="DaggerfallWorkshop_Game_UserInterface_DaggerfallFont_GetUnicodes_" data-uid="DaggerfallWorkshop.Game.UserInterface.DaggerfallFont.GetUnicodes*"></a>
+  <h4 id="DaggerfallWorkshop_Game_UserInterface_DaggerfallFont_GetUnicodes" data-uid="DaggerfallWorkshop.Game.UserInterface.DaggerfallFont.GetUnicodes">GetUnicodes()</h4>
+  <div class="markdown level1 summary"><p>Gets array of unicode values from currently loaded SDF font.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint[] GetUnicodes()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a>[]</td>
+        <td><p>Array of unicode characters. Can be null or empty.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
     <a href="https://github.com/TheLacus/daggerfall-unity-docs/new/master/apidoc/new?filename=DaggerfallWorkshop_Game_UserInterface_DaggerfallFont_HasGlyph_System_Int32_.md&amp;value=---%0Auid%3A%20DaggerfallWorkshop.Game.UserInterface.DaggerfallFont.HasGlyph(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
@@ -1392,18 +1424,19 @@ Current implementation will load a TextMeshPro 2.0.x font asset directly for SDF
     <a href="https://github.com/TheLacus/daggerfall-unity-docs/new/master/apidoc/new?filename=DaggerfallWorkshop_Game_UserInterface_DaggerfallFont_LoadSDFFontAsset_System_String_.md&amp;value=---%0Auid%3A%20DaggerfallWorkshop.Game.UserInterface.DaggerfallFont.LoadSDFFontAsset(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Interkarma/daggerfall-unity/blob/master/Assets/Scripts/Game/UserInterface/DaggerfallFont.cs/#L462">View Source</a>
+    <a href="https://github.com/Interkarma/daggerfall-unity/blob/master/Assets/Scripts/Game/UserInterface/DaggerfallFont.cs/#L464">View Source</a>
   </span>
   <a id="DaggerfallWorkshop_Game_UserInterface_DaggerfallFont_LoadSDFFontAsset_" data-uid="DaggerfallWorkshop.Game.UserInterface.DaggerfallFont.LoadSDFFontAsset*"></a>
   <h4 id="DaggerfallWorkshop_Game_UserInterface_DaggerfallFont_LoadSDFFontAsset_System_String_" data-uid="DaggerfallWorkshop.Game.UserInterface.DaggerfallFont.LoadSDFFontAsset(System.String)">LoadSDFFontAsset(String)</h4>
-  <div class="markdown level1 summary"><p>Load a TextMeshPro 2.0.x asset used for this to use for SDF rendering.
+  <div class="markdown level1 summary"><p>Load a TextMeshPro 2.0.x font asset to use for SDF rendering.
 Mods can use DaggerfallUI.Instance.Font0 through Font4 to access the instances used by other game windows.
-Custom font should be set only during startup.</p>
+Custom font should be set only during startup.
+Note: Asset must be in a Resources folder.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void LoadSDFFontAsset(string path)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool LoadSDFFontAsset(string path)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1418,7 +1451,23 @@ Custom font should be set only during startup.</p>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.string">String</a></td>
         <td><span class="parametername">path</span></td>
-        <td><p>Path to a TextMeshPro 1.3.x font asset.</p>
+        <td><p>Path to a TextMeshPro 2.0.x font asset.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><p>True if successful.</p>
 </td>
       </tr>
     </tbody>
@@ -1503,6 +1552,40 @@ This is an expensive operation, only use this at font create time.</p>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">ascii</span></td>
         <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/TheLacus/daggerfall-unity-docs/new/master/apidoc/new?filename=DaggerfallWorkshop_Game_UserInterface_DaggerfallFont_UseSDFFontAsset_TMPro_TMP_FontAsset_.md&amp;value=---%0Auid%3A%20DaggerfallWorkshop.Game.UserInterface.DaggerfallFont.UseSDFFontAsset(TMPro.TMP_FontAsset)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Interkarma/daggerfall-unity/blob/master/Assets/Scripts/Game/UserInterface/DaggerfallFont.cs/#L480">View Source</a>
+  </span>
+  <a id="DaggerfallWorkshop_Game_UserInterface_DaggerfallFont_UseSDFFontAsset_" data-uid="DaggerfallWorkshop.Game.UserInterface.DaggerfallFont.UseSDFFontAsset*"></a>
+  <h4 id="DaggerfallWorkshop_Game_UserInterface_DaggerfallFont_UseSDFFontAsset_TMPro_TMP_FontAsset_" data-uid="DaggerfallWorkshop.Game.UserInterface.DaggerfallFont.UseSDFFontAsset(TMPro.TMP_FontAsset)">UseSDFFontAsset(TMP_FontAsset)</h4>
+  <div class="markdown level1 summary"><p>Use provided TextMeshPro 2.0.x font asset for SDF rendering.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void UseSDFFontAsset(TMP_FontAsset tmpFont)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TMPro.TMP_FontAsset</span></td>
+        <td><span class="parametername">tmpFont</span></td>
+        <td><p>TMP font asset to use for this font.</p>
+</td>
       </tr>
     </tbody>
   </table>

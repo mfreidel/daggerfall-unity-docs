@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Mods Interaction </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Mods Interaction ">
+    <meta name="generator" content="docfx 2.59.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="mods-interaction">Mods Interaction</h1>
+
+<p>The <strong>ModManager</strong> singleton allows to retreve a <strong>Mod</strong> instance from its title.</p>
+<pre><code>Mod mod = ModManager.Instance.GetMod(&quot;modTitle&quot;);
+bool modFound = mod != null;
+bool modStarted = mod != null &amp;&amp; mod.IsReady;
+</code></pre>
+<blockquote>
+<p>Consider using <strong>GetModFromGUID(string modGUID)</strong> to avoid breaking if the title is changed.</p>
+</blockquote>
+<h2 id="message-receiver">Message Receiver</h2>
+<p>The message receiver allows to exchange messages and data with other mods. The receiving mod must have a delegate of type <strong>DFModMessageReceiver</strong> assigned to <strong>Mod.MessageReceiver</strong>. A reply can be sent with the <strong>callback</strong> parameter.</p>
+<pre><code>void ModManager.Instance.SendModMessage(string modTitle, string message, object data = null, DFModMessageCallback callback = null);
+void DFModMessageReceiver(string message, object data, DFModMessageCallback callBack);
+void DFModMessageCallback(string message, object data);
+</code></pre>
+<p>A simple example:</p>
+<pre><code>mod.MessageReceiver = (string message, object data, DFModMessageCallback callBack) =&gt;
+{
+    if (message == &quot;numberRequest&quot; &amp;&amp; callBack != null)
+        callBack(&quot;numberReply&quot;, 0);
+};
+</code></pre>
+<pre><code>ModManager.Instance.SendModMessage(&quot;modTitle&quot;, &quot;numberRequest&quot;, null, (string message, object data) =&gt;
+{
+    int number = (int)data;
+});
+</code></pre>
+<p>The mod message system can also be used to handle events. Note that the receiver is setup from Awake (or the static entry point if you prefer) while the handler registration is performed from Start. This is consistent with the pattern of using Awake to initialize self and Start to access other objects, ensuring that you aren’t accessing something that doesn’t exist yet.</p>
+<pre><code>public event Action OnGameObjectSpawned;
+
+void Awake()
+{
+    mod.MessageReceiver = (string message, object data, DFModMessageCallback callback) =&gt;
+    {
+        switch (message)
+        {
+            case &quot;RegisterOnGameObjectSpawned&quot;:
+                OnGameObjectSpawned += data as Action&lt;GameObject&gt;;
+                break;
+        }
+    };
+}
+</code></pre>
+<pre><code>void Start()
+{
+    ModManager.Instance.SendModMessage(&quot;Mod Title&quot;, &quot;RegisterOnGameObjectSpawned&quot;, (Action&lt;GameObject&gt;)((go) =&gt;
+    {
+        Debug.Log(go.name);
+    }));
+}
+</code></pre>
+<h2 id="dependencies">Dependencies</h2>
+<p>It is possible for a mod to declare other mods as dependencies that must also be installed, or define criteria to validate local load order. For example you can enforce that your mod is positioned below another one if is available or state compatibility only with a certain version.</p>
+<p>To do so, open the mod manifest file (.dfmod.json) and add a new property named <em>Dependencies:</em></p>
+<pre><code>&quot;Files&quot;: [
+    ],
+&quot;Dependencies&quot;: [
+    {
+        &quot;Name&quot;: &quot;example-mod&quot;,
+        &quot;IsOptional&quot;: false,
+        &quot;IsPeer&quot;: false,
+        &quot;Version&quot;: &quot;1.0.0&quot;
+    }
+]
+</code></pre>
+<p>These are the supported properties:</p>
+<ul>
+<li><strong>Name</strong>: Name of target mod.</li>
+<li><strong>IsOptional</strong>: If true, target mod doesn’t need to be available, but must validate these criteria if it is.</li>
+<li><strong>IsPeer</strong>: If true, target mod can be positioned anywhere in the load order, otherwise must be positioned above.</li>
+<li><strong>Version</strong>: If not null this string is the minimum accepted version with format X.Y.Z. Pre-release identifiers following an hyphen are ignored in target version so they must be omitted here. For example “1.0.0” is equal to “1.0.0-rc.1”.</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/ModsInteraction.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

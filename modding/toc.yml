@@ -1,8 +1,9 @@
-- name: Mod Builder
-  href: ModBuilder.md
+
+- name: Scripting
+  href: Scripting.md
   items:
-  - name: Scripting
-    href: Scripting.md
+  - name: Mod Builder
+    href: ModBuilder.md
   - name: Mod Settings
     href: ModSettings.md
   - name: Mod Data
@@ -16,7 +17,7 @@
   - name: Mods Interaction
     href: ModsInteraction.md
 
-- name: Import Assets
+- name: Assets
   href: AssetsImport.md
   items:
   - name: Models And Flats

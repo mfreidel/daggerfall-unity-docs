@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Common pitfalls </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Common pitfalls ">
+    <meta name="generator" content="docfx 2.59.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="common-pitfalls">Common pitfalls</h1>
+
+<p>There are a number of pitfalls to using the X-engine for quests. This section documents known issues with the quest engine, and tries to explain them in a general way. Broadly stated, X-engine cannot reliably handle simultaneous events, and imposes a serial or chronological order that the quest author does not realize.</p>
+<p>Technically, these are sometimes called <em>race conditions</em>, because, like the winner of a foot race, the task which executes first cannot be predicted by the quest author.</p>
+<h3 id="unable-to-check-repute">Unable to check repute</h3>
+<p>Using the <code>[when repute with _aFaction_](#factionrepute)</code> condition to examine the PC's standing with a Daggerfall faction can fail spontaneously when the result of that task is examined in a subsequent <code>[when condition](#multipletests)</code>.</p>
+<pre><code>\_reputeOK\_ task:
+    when repute with Cyndassa is at least 17
+
+\_clickedCyndi\_task:
+    clicked \_cyndi\_
+
+\_nextStep\_ task:
+    when \_clickedCyndi\_ and not \_reputeOK\_
+
+\_alternateStep\_task:
+    when \_clickedCyndi\_ and \_reputeOK\_
+</code></pre>
+<p>In this quest fragment, it is unpredictable whether _nextStep_ or _alternateStep_ is performed, regardless of the PC's repute with Cyndassa. _nextStep_ may always be performed, and if the PC's repute is high enough, both tasks will execute, which is almost certainly not what you expect to happen.</p>
+<p>There is a race between _reputeOK_ and _nextStep_. The order of the tasks in the scenario seems to imply the _reputeOK_ task is considered before the _nextStep_ task, but in fact, X-engine may check the _nextStep_ condition <em>before</em> it checks the _reputeOK_ condition.</p>
+<p>The race condition can be partly avoided by rewriting the _reputeOK_ task:</p>
+<pre><code>\_reputeOK\_ task:
+    when repute with Cyndassa is at least 17
+    clear \_nextStep\_
+
+\_clickedCyndi\_task:
+    clicked \_cyndi\_
+
+\_nextStep\_ task:
+    when \_clickedCyndi\_ and not \_reputeOK\_
+
+\_alternateStep\_task:
+    when \_clickedCyndi\_ and \_reputeOK\_
+</code></pre>
+<p>This rewrite won't work right if either _nextStep_ or _alternateStep_ have <em>any</em> actions associated with them.</p>
+<p>Sometimes it's possible to rearrange the steps of a quest to accommodate this race condition. Othertimes it is not. It may be helpful to recall that every task starts out unexecuted, and so some condition which is <em>not</em> is always true to begin with.</p>
+<hr>
+<h3 id="unable-to-repeat-messages">Unable to repeat messages</h3>
+<p>How X-engine handles quest dialog is counterintuitive in a number of ways. The basic rule is that <em>any quest condition/response that posts a Qrc message on the screen will be performed no more than once, no matter how many times the conditions for its performance are satisfied.</em></p>
+<p>That is, the user will see the message text only the first time such a task is performed, no matter how many subsequent times the task might be reasonably performed.</p>
+<p>This seems harmless enough, until you want a quest to post some message in response to clicking on a quest NPC, perhaps to repeat some mission critical quest information. Despite the propaganda in the preceding sections, the X-engine will not provide such service.</p>
+<p>Once a condition/response has posted a Qrc message, it will never reshow that message. Period.</p>
+<p>This seems to be genuine oversight in the quest engine design. If your quest requires a Qrc message to be repeated in the condition/response section, the only way to make that happen is to arrange for seperate tasks to display the message each time you want the message posted.</p>
+<p>This is a fairly severe limit on what a quest can and cannot do.</p>
+<p>A common desire is for a quest NPC to repeat a speech as often as the player clicks the mouse on that NPC. X-engine simply does not allow this idiom to be used.</p>
+<hr>
+<h3 id="unable-to-stop-sounds">Unable to stop sounds</h3>
+<p>Unlike message posts, a sound once started by the <code>[play sound](#playsound)</code> command performs indefinitely.</p>
+<p>To stop a playing sound, clear the task that started it.</p>
+<pre><code>Clock \_silence\_
+
+\_makeNoise\_ task:
+    play sound halt every 2 minutes 3 times
+
+\_silence\_ task:
+    clear \_makeNoise\_
+</code></pre>
+<p>In this quest fragment, when the _silence_ timer runs down, the noise maker task is stopped.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestPitfalls.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

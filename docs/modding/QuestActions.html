@@ -1,0 +1,763 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Quest Actions </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Quest Actions ">
+    <meta name="generator" content="docfx 2.59.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="quest-actions">Quest Actions</h1>
+
+<p>Quest actions have appeared briefly through the examples of quest conditions, but this section documents all the known activities which can take place during a quest task.</p>
+<p>A task may include any number of actions to respond with when its conditions for activation are met. A task may have no explicit actions at all, in which case it serves to remember that one or more conditions have been met.</p>
+<p>Quest actions can be divided into groups for</p>
+<ul>
+<li>Managing inventory</li>
+<li>Managing geography</li>
+<li>Managing characters (PC, NPCs, and foes)</li>
+<li>User interactions</li>
+<li>Managing special quests</li>
+</ul>
+<p>But what follows is an alphabetic listing of the known quest actions.</p>
+<hr>
+<h3 id="adding-a-new-questor">Adding a new questor</h3>
+<pre><code>add anNPC as questor
+</code></pre>
+<p>In guild quests the PC is often given some chore to perform, after which the PC must return to the questor to receive the reward or bonus that successfully completing the quest provides.</p>
+<p>However, <strong>X-engine</strong> allows the NPC playing the questor role to change during the quest itself, which is one way to break the 'FedEx' monotony of questing. Different NPCs can be given responsibility for separate stages or subquests.</p>
+<p>It is possible to adopt more than one NPC as the questor, in case your scenario is set up to have different endings.</p>
+<pre><code>changeQuestor task:
+    drop \_oldNPC\_ as questor
+    add \_newNPC as questor
+</code></pre>
+<p>shows a quest fragment that hands control of the quest from one NPC (the _oldNPC_) to another (the _newNPC_).</p>
+<hr>
+<h3 id="adding-an-npcs-portrait">Adding an NPC's portrait</h3>
+<pre><code>add anNPC face
+add anNPC face saying nnnn
+</code></pre>
+<p>So-called <em>escort quests</em> involve rescuing captured nobles, returning kidnapped children, bodyguarding officials in transit, and the like, usually display the character portrait of the NPC under escort.</p>
+<p>When writing a quest with a suitable escort section in it, we need a way to tell <strong>X-engine</strong> to pin the character portrait of a quest-related person on the screen.</p>
+<p>Optionally, the NPC can make a speech before pinning up a portrait by supplying the number of a Qrc message block.</p>
+<pre><code>Message: 1011
+  &lt;ce&gt; Oh, thank you so much for rescuing me.
+  &lt;ce&gt; Please take me home.
+
+when \_trappedNPC\_ clicked
+    say 1011
+    remove npc \_trappedNPC\_
+    add \_trappedNPC\_ face
+</code></pre>
+<p>shows an escort quest fragment where the trapped NPC makes a speech when the PC clicks on the NPC, after which the NPC image is removed from the game world and the character portrait for the NPC is overlaid on the 3D view.</p>
+<p>It is important to remember to use the drop face command at some point during the quest after using the <em>add face</em> so the NPC's image won't be left on the screen when the quest ends.</p>
+<p>Note also, there are other difficulties in continuity with this action. Some permanent NPCs put up portraits that clash with their ostensible gender.</p>
+<p>For example, pinning up the traveling portrait for Cyndassa, the maid in Castle Daggerfall, puts up the picture of a bearded, black haired man with an eye patch.</p>
+<p>Also note, that for randomly rolled NPCs, the travel portrait is automatically associated with the dominant race of a province. So adding a face in Daggerfall province will select a portrait from the collection of Breton faces. While the same NPC in Sentinel province will select a portrait from the collection of Redguard faces.</p>
+<p>If your quest uses the same NPC for more than one escort, (for example, you might want the PC to deliver an NPC to a place and then later on in the quest, take the NPC to a second destination) if the starting province and the destination province are different, the second pick-up of the NPC won't be guaranteed to provide the same travel portrait as the first pick-up did.</p>
+<hr>
+<h3 id="adding-a-foes-portrait">Adding a foe's portrait</h3>
+<pre><code>add foe aFoe face
+</code></pre>
+<p>Some quests, notably temple quests to retrieve deranged priests, require the PC to injure a quest foe representing the priest to bring him to his senses for return to the temple. In this sort of escort quest, after injuring the foe, its character portrait is pinned on the screen until the PC returns the priest to the temple.</p>
+<p>Those quests use this command to display the enemy's portrait on the screen. As usual, you need to drop the foe's face at some point before ending the quest.</p>
+<hr>
+<h3 id="managing-dialog-entries">Managing dialog entries</h3>
+<pre><code>add dialog for item anItem
+add dialog for person anNPC
+add dialog for location aPlace
+add dialog for location aPlace item anItem
+add dialog for location aPlace person anNPC
+add dialog for person anNPC item anItem
+add dialog for location aPlace person anNPC item anItem
+</code></pre>
+<p>To tie chatting wih townspeople about current events to a quest, you can add stock dialog replies about quest npcs, items, and places to the replies given to the <em>Any news?</em> query in the dialog screen. See <code>[dialog link](#rumore5)</code> for details.</p>
+<p>You can also add additional entries to the picklist under the <em>Tell me about</em> dialog tab. Note that there are two ways to incorporate quest-related information into the dialog screen: the incredibly obvious, and the not so obvious.</p>
+<p>When you create a quest <code>[Item](#items), [Person](#persons), or [Place](#questplaces)</code> adorned with a Qrc text number, this creates an incredibly obvious dialog opportunity, by adding the thing in question to the principle pick-list under the <em>Tell me about</em> dialog tab.</p>
+<p>Such entries generally don't require especially good repute or etiquette on the part of the PC, although townspeople may still refuse to have anything to do with a PC they don't particularly care for.</p>
+<p>But the presence of the entries themselves can give the PC a clue about what might possibly be going on with a quest that is currently in progress.</p>
+<p>To exercise a PC's social skills, and thus to discriminate against PCs who lack them, a quest can silently add stock replies to the <em>Any News</em> responses that a townsperson might say, as well as create links between quest resources which are logically related to each for the purpose of the quest.</p>
+<p>While the Qrc messages adorning quest items, npcs, and places are always available for reply throughout the whole time a quest is active, the <em>Tell me about</em> dialog entries can be extended when certain quest milestones occur.</p>
+<p>So a quest may, for example, turn on gossip about the location of a remote dungeon once the PC has made contact with a certain quest npc. Of course, the player may take no heed of the townsperson blabbering on about the goings on in some remote dungeon, but so it goes.</p>
+<p>These features can make quest resolution much more challenging that the typical &quot;Fed Ex&quot; escapades. Players often complain that quests using these features are &quot;buggy&quot; because their PC's social skills aren't up to the task of finishing the quest.</p>
+<p>You can add stock dialog replies for any combination of a quest item, npc, or place with one add dialog for command. And you can repeat an add dialog for command as many times as needed to add replies for as many quest things as you need to.</p>
+<p>Read the <em>cure lycanthropy</em> and <em>cure vampirism</em> quests to see how these quest elements can be used.</p>
+<pre><code>add dialog for item anItem
+</code></pre>
+<p>This action adds <em>anItem</em> to the <em>Tell me about</em> dialog picklist and includes the Qrc text block from the item's <em>anyInfo</em> tag. If the item has no <em>anyInfo</em> tag, no entry for the item will be created.</p>
+<p>When the player selects that item from the dialog picklist, the NPC may recite some useful information about the item, depending on how well-respected the PC is with respect to the NPC's affiliations.</p>
+<p>If the item has been linked to another quest resource by the <code>[_dialog link_](#rumor5)</code> command, when the NPC recites the Qrc message from the item's <em>anyInfo</em> tag, the linked quest resource name is added to the dialog pick list, just as though the quest scenario issued an appropriate <em>add dialog</em> command for the linked resource.</p>
+<p>Please note, if you want to use linked dialog entries in a quest, you must first use the <code>[_dialog link_](#rumor5)</code> command to establish the desired relationship before using the <em>add dialog</em> command to update the dialog picklist.</p>
+<pre><code>add dialog for person anNPC
+</code></pre>
+<p>This action adds <em>anNPC</em> to the <em>Tell me about</em> dialog picklist and includes the Qrc text block from the person's <em>anyInfo</em> tag. If the person has no <em>anyInfo</em> tag, no entry for the person will be created.</p>
+<p>If the person has been linked to another quest resource by the <code>[_dialog link_](#rumor5)</code> command, when the NPC recites the Qrc message from the person's <em>anyInfo</em> tag, the linked quest resource name is added to the dialog pick list, just as though the quest scenario issued an appropriate <em>add dialog</em> command for the linked resource.</p>
+<p>Please note, if you want use linked dialog entries in a quest, you must first use the <code>[_dialog link_](#rumor5)</code> command to establish the desired relationship before using the <em>add dialog</em> command to update the dialog picklist.</p>
+<pre><code>add dialog for location aSite
+</code></pre>
+<p>This action adds <em>aSite</em> to the <em>Tell me about</em> dialog picklist and includes the Qrc text block from the place's <em>anyInfo</em> tag. If the place has no <em>anyInfo</em> tag, no entry for the place will be created.</p>
+<p>If the location has been linked to another quest resource by the <code>[_dialog link_](#rumor5)</code> command, when the NPC recites the Qrc message from the place's <em>anyInfo</em> tag, the linked quest resource name is added to the dialog pick list, just as though the quest scenario issued an appropriate <em>add dialog</em> command for the linked resource.</p>
+<p>Please note, if you want use linked dialog entries in a quest, you must first use the <code>[_dialog link_](#rumor5)</code> command to establish the desired relationship before using the <em>add dialog</em> command to update the dialog picklist.</p>
+<p>If you have several different kinds of quest resources to gossip about, you can combine location, person, and item (in that order) with one add dialog for command:</p>
+<pre><code>add dialog for location \_store\_ person \_contact\_ item \_gem\_
+add dialog for location \_house\_ item \_letter\_
+add dialog for person \_qgiver\_ item \_ring\_
+</code></pre>
+<hr>
+<h3 id="magically-enhancing-a-foe">Magically enhancing a foe</h3>
+<pre><code>cast aSpell on aFoe
+</code></pre>
+<p>You can magically enhance any foe in a quest by casting one of the standard spells with this action. Of course, you can repeat the action any number of times with different spells to achieve whatever effect you would like to have.</p>
+<p>Please see the <code>[_spell detection_](#spellscast)</code> condition for the spell enhancements which are available. For example</p>
+<pre><code>cast Free\_Action spell on \_foe\_
+cast Spell\_Reflection spell on \_foe\_
+cast Shield spell on \_foe\_
+</code></pre>
+<p>strengthens _foe_ with the indicated enchantments.</p>
+<hr>
+<h3 id="changing-the-players-repute">Changing the player's repute</h3>
+<pre><code>change repute with anNPC by nn
+</code></pre>
+<p>You can increase or decrease the player character's repute with any NPC associated with a quest by a Person resource.</p>
+<pre><code>change repute with \_qgiver\_ by +15
+</code></pre>
+<p>would increase the PC's repute with the _qgiver_ and propagate that change to all the factions allied with and repudiated by _qgiver_.</p>
+<pre><code>change repute with \_qgiver\_ by -15
+</code></pre>
+<p>would decrease the PC's repute with _qgiver_ and associates.</p>
+<hr>
+<h3 id="repeating-one-or-more-tasks">Repeating one or more tasks</h3>
+<pre><code>clear aTaskName ...
+</code></pre>
+<p>You can instruct a quest to forget if a task has already been performed with the clear command. Clearing a completed task allows that task to repeat itself when its conditions are ripe. Up to four tasks/variables can be cleared with one command.</p>
+<hr>
+<h3 id="creating-waves-of-attacking-foes">Creating waves of attacking foes</h3>
+<pre><code>create aFoe every m minutes n times with k% success
+</code></pre>
+<p>You can create mobs of enemies to harry the player.</p>
+<pre><code>Message: 1019
+  &lt;ce&gt; Ha! You'll never escape with \_item\_.
+
+Foe \_thief\_ is 3 thief
+
+from 0:0 to 3:00 daily
+    create \_thief\_ every 13 minutes 30 times with 75% success
+
+when \_thief\_ injured
+    say 1019
+</code></pre>
+<p>would dispatch trios of thugs after the PC every night from midnight to 3 am. Some of the thugs won't succeed in locating the PC.</p>
+<p>To create foes in a more guarded manner, see <code>[placing foes in the game world.](#placefoe)</code></p>
+<p>The spoils from the dead bodies of human foes generated by this command have the interesting properties of (a) improving in quality with each wave and (b) repeating the spoils dropped by the foes dispatched in the previous waves. The spoils are also proportional to player level, so higher level PCs tend to see better goods. But even at level 2 or 3, mithril drops aren't that uncommon.</p>
+<p>I've had PCs garner over 5 million gold from such an episode. Even at level 2 or 3, gaining enough gold to purchase a yacht is commonplace.</p>
+<p>The enemies spawned by <em>create foe</em> will track the PC, both in town and inside dungeons. Some quests prefer to limit the appearance of spawned mobs to the town areas of the map. See <code>[_send foe_](#sendfoe)</code>.</p>
+<p>Note that the <code>[_injured_](#attackingfoes)</code> condition can be triggered for each wave of attackers, while the <code>[_killed_](#attackingfoes)</code> condition will only trigger up to the number of foes determined from the Foe command, no matter how many of them are actually slaughtered by the PC.</p>
+<hr>
+<h3 id="creating-an-npc-somewhere-in-the-game-world">Creating an NPC somewhere in the game world</h3>
+<pre><code>create npc anNPC
+</code></pre>
+<p>This action generates anNPC (described by a Person command) at that NPC's birthplace in the current province.</p>
+<pre><code>Person \_contact\_ faction The\_Cabal female anyInfo 1012
+
+\_foundHint\_ task:
+    create npc \_contact\_
+</code></pre>
+<p>installs the _contact_ npc at a place in the current province, probably not local to the PC, and hopefully in a venue appropriate to the npc's group or faction.</p>
+<hr>
+<h3 id="creating-an-npc-at-a-specific-place">Creating an NPC at a specific place</h3>
+<pre><code>create npc at aPlace
+</code></pre>
+<p>Although I've called this <em>create npc</em>, <em>reserve sprite</em> may be more appropriate. In the existing quests it is invariably followed by a <em>place npc</em> at the same place, and occasionally by <em>place item</em> at the same place or by <em>create foe</em> at the same place.</p>
+<p>Its purpose seems to be to inform <strong>X-engine</strong> that a particular site will have an item sprite or an npc sprite teleported to it during the quest.</p>
+<p>At least, so far as my testing has shown, <em>create npc at</em> without a corresponding <em>place npc</em> action has no visible effect in the game world.</p>
+<p>See the <code>[place NPC](#placenpc)</code> command for the usual way of positioning an NPC in the game world.</p>
+<p>In general, permanent NPCs use the create npc action prior to using the place npc action. A permanent NPC used only with the place npc action isn't guaranteed to be visible within the game world.</p>
+<hr>
+<h3 id="curing-diseases">Curing diseases</h3>
+<pre><code>cure aDisease
+</code></pre>
+<p>The PC can be afflicted by disease, either during a quest (see <code>[make pc ill](#ill))</code> or through exposure to various elements (foes with poisoned blades, were-things, etc).</p>
+<p>When a quest proceeds to the point where the PC should be cured, the <em>cure</em> action removes the malady in question from the player character. A quest can cure any disease inflicted by the make pc ill action, as well as cure lycanthropy or vampirism. Known conditions which can be cured:</p>
+<p>Blood_Rot</p>
+<p>Brain_Fever</p>
+<p>Caliron's_Curse</p>
+<p>Cholera</p>
+<p>Chrondiasis</p>
+<p>Consumption</p>
+<p>Dementia</p>
+<p>Leprosy</p>
+<p>Plague</p>
+<p>Red_Death</p>
+<p>Stomach_Rot</p>
+<p>Swamp_Rot</p>
+<p>Typhoid_Fever</p>
+<p>Witches'_Pox</p>
+<p>Wizard_Fever</p>
+<p>Wound_Rot</p>
+<p>Yellow_Fever</p>
+<p>Wizard_Fever is referred to as <em>Wizard's bane</em> or as <em>lunar chills</em> in the quests from Bethesda.</p>
+<hr>
+<h3 id="change-an-npcs-status">Change an NPC's status</h3>
+<pre><code>destroy anNPC
+</code></pre>
+<p>This action completely obliterates a quest <em>Person</em> resource. This is different from <code>[_hide npc_](#removenpc)</code> in that with the latter form, the resource symbol is still available for substitution within Qrc messages blocks.</p>
+<p>Once a quest resource has been destroyed, however, any subsequent reference to that quest resource symbol by a Qrc message will yield the infamous <strong>BLANK</strong> text.</p>
+<p>This action appears in the mummy's finger quest, one of the vampire clan quests, and in Mynisera's quest to locate the courier who delivered the Emperor's letter to Aubk-i.</p>
+<hr>
+<h3 id="managing-quest-rumors">Managing quest rumors</h3>
+<pre><code>dialog link for item anItem
+dialog link for person anNPC
+dialog link for location aSite
+dialog link for location aSite person anNPC item anItem
+dialog link for location aSite item anItem
+dialog link for person anNPC item anItem
+</code></pre>
+<p>To tie chatting wih townspeople about current events to a quest, you can add stock dialog replies about quest npcs, items, and places to the replies given to the <em>Any news?</em> query in the dialog screen.</p>
+<p>In addition, you can establish a link between two or more quest resources and dialog entries in the principle picklist of the dialog screen.</p>
+<p>Note that there are two ways to incorporate quest-related information into the dialog screen: the incredibly obvious, and the not so obvious.</p>
+<p>When you create a quest <code>[Item](#items), [Person](#persons), or [Place](#questplaces)</code> adorned with a Qrc text number, this creates an incredibly obvious dialog opportunity, by adding the thing in question to the principle pick-list under the <em>Tell me about</em> dialog tab.</p>
+<p>Such entries generally don't require especially good repute or etiquette on the part of the PC, although townspeople may still refuse to have anything to do with a PC they don't particularly care for.</p>
+<p>But the presence of the entries themselves can give the PC a clue about what might possibly be going on with a quest that is currently in progress.</p>
+<p>To exercise a PC's social skills, and thus to discriminate against PCs who lack them, a quest can silently add stock replies to the <em>Any News</em> responses that a townsperson might say.</p>
+<p>While the Qrc messages adorning quest items, npcs, and places are always available for reply throughout the whole time a quest is active, the stock <em>Any News</em> replies can be added when certain quest milestones occur.</p>
+<p>So a quest may, for example, turn on gossip about the location of a remote dungeon once the PC has made contact with a certain quest npc. Of course, the player may take no heed of the townsperson blabbering on about the goings on in some remote dungeon, but so it goes.</p>
+<p>And the player's repute with the townsperson's affiliations seems to influence whether a quest related rumor pops up, or whether the townie just shines the player on.</p>
+<p>These features can make quest resolution much more challenging that the typical &quot;Fed Ex&quot; escapades. Players often complain that quests using these features are &quot;buggy&quot; because their PC's social skills aren't up to the task of finishing the quest.</p>
+<p>In addition, when you create a dialog link between two quest resources, <strong>X-engine</strong> will arrange to insert a dialog topic about a linked resource, but only after the PC has chatted about another part of the link first.</p>
+<p>Suppose we say</p>
+<pre><code>dialog link for person \_theStooge\_ item \_theRelic\_
+</code></pre>
+<p>during our quest startup.</p>
+<p>In addition to the preceding discussion about rumors, when the time is ripe, the quest can expliciting insert a dialog topic for <em>_theRelic_</em> into the dialog picklist by using the <code>[add dialog](#rumor1)</code> command:</p>
+<pre><code>add dialog for item \_theRelic\_
+</code></pre>
+<p>Now, the next time the PC uses the dialog screen, an entry for <em>_theRelic_</em> will be available for selection. Once the PC selects this entry and the NPC chats about <em>_theRelic_</em>, a new entry will appear in the picklist for <em>_theStooge_</em>, as well as <em>_theRelic_</em>.</p>
+<p>For a linked topic to appear in the dialog screen picklist, its symbol name must appear within the linking dialog Qrc block. That is, the Qrc text bound to _theRelic_ must mention _theStooge_ within its message block or else the linked quest resource (_theStooge_) will never appear as a new topic of conversation.</p>
+<p>If the Qrc message block is subsectioned, the linkage operates independently for each subsection. So, for example, two subsections might have no mention of _theStooge_, but the third does. Only when the third section is displayed to the player will the linked topic be added to the dialog screen.</p>
+<p>Or a different branch of the quest might arrange to reveal the opposite side of the link:</p>
+<pre><code>add dialog for person \_theStooge\_
+</code></pre>
+<p>In this case, the next time the PC uses the dialog screen, an entry for <em>_theStooge_</em> will be available for selection. Once the PC selects this entry and the NPC chats about <em>_theStooge_</em>, a new entry will appear in the picklist for <em>_theRelic_</em>, as well as <em>_theStooge_</em>. Of course, the Qrc message bound to _theStooge_ must mention _theRelic_ for this to occur.</p>
+<p>Read the <em>cure lycanthropy</em> and <em>cure vampirism</em> quests to see how these quest elements can be used.</p>
+<pre><code>dialog link for item anItem
+</code></pre>
+<p>This action adds a stock <em>Any News</em> reply to gossip about the quest item anItem.</p>
+<pre><code>dialog link for person anNPC
+</code></pre>
+<p>This action adds a stock <em>Any News</em> reply to gossip about the quest npc anNPC.</p>
+<pre><code>dialog link for location aSite
+</code></pre>
+<p>This action adds a stock <em>Any News</em> reply to gossip about the quest location aSite.</p>
+<p>If you have several different kinds of quest things to gossip about, you can combine location, person, and item (in that order) with one add dialog for command:</p>
+<pre><code>dialog link for location \_house\_ item \_letter\_
+dialog link for person \_qgiver\_ item \_ring\_
+</code></pre>
+<p>creates one dialog bridge between <em>_house_</em> and <em>_letter_</em> and another bridge between <em>_qgiver_</em> and <em>_ring_</em>.</p>
+<pre><code>dialog link for for location \_store\_ person \_contact\_ item \_gem\_
+</code></pre>
+<p>creates a three-way bridge between <em>_store_</em>, <em>_contact_</em>, and <em>_gem_</em>.</p>
+<p>Note that creating a dialog link with just one quest resource in it has the property of removing that resource from the dialog pick list when the resource has an <em>anyInfo</em> tag, <em>rumors</em> tag, or <em>used</em> tag.</p>
+<hr>
+<h3 id="dropping-a-questor">Dropping a questor</h3>
+<pre><code>drop anNPC as questor
+</code></pre>
+<p>In guild quests the PC is often given some chore to perform after which the PC must return to the questor to receive the reward or bonus that successfully completing the quest provides.</p>
+<p>However, <strong>X-engine</strong> allows the NPC playing the questor role to change during the quest itself, which is one way to break the 'FedEx' monotony of questing. Different NPCs can be given responsibility for separate stages or subquests.</p>
+<pre><code>changeQuestor task:
+    drop \_oldNPC\_ as questor
+    add \_newNPC as questor
+</code></pre>
+<p>shows a quest fragment that hands control of the quest from one NPC (the _oldNPC_) to another (the _newNPC_).</p>
+<hr>
+<h3 id="dropping-an-npcs-portrait">Dropping an NPC's portrait</h3>
+<pre><code>drop anNPC face
+</code></pre>
+<p>So-called <em>escort quests</em> involve rescuing captured nobles, returning kidnapped children, bodyguarding officials in transit, and the like, usually display the character portrait of the NPC under escort.</p>
+<p>When writing a quest with a suitable escort section in it, we need a way to tell <strong>X-engine</strong> to remove the character portrait of a quest-related person from the screen once the escort is finished.</p>
+<pre><code>Message: 1011
+  &lt;ce&gt; Oh, thank you so much for returning with me.
+  &lt;ce&gt; I can find my way home from here.
+
+when at \_npcHouse\_
+    say 1011
+    drop \_trappedNPC\_ face
+</code></pre>
+<p>shows an escort quest fragment where the trapped NPC makes a speech when the PC clicks on the NPC, after which the NPC image is removed from the game world and the character portrait for the NPC is overlaid on the 3D view.</p>
+<p>It is important to remember to use the <code>[add face](#addface)</code> command at some point during the quest before using drop face so the usage counts for the NPC's image will be intact when the quest ends.</p>
+<p>Moving the body of the NPC whose face is pinned on the screen <em>after</em> adding its face is not advisable. If you add an npc face and then move the body of the npc, you'll have a problem when that face is finally dropped because the face won't be removed from the screen for some reason. Either move the body of the NPC before adding its face. Or hide the body of the npc and move it after dropping its face.</p>
+<hr>
+<h3 id="dropping-a-foes-portrait">Dropping a foe's portrait</h3>
+<pre><code>drop foe aFoe face
+</code></pre>
+<p>Some quests, notably temple quests to retrieve deranged priests, require the PC to injure a quest foe representing the priest to bring him to his senses for return to the temple. In this sort of escort quest, after injuring the foe, its character portrait is pinned on the screen until the PC returns the priest to the temple.</p>
+<p>Those quests use this command to dispose of the enemy's portrait once the player returns to the temple to complete the quest.</p>
+<hr>
+<h3 id="ending-the-current-quest">Ending the current quest</h3>
+<pre><code>end quest
+</code></pre>
+<p>Any task may specify that it completes the quest's activity, whether successful or not, by using the end quest command. When the <em>end quest</em> is performed, all quest-related objects (green background) in the player's inventory are removed, other quest resources (Items, Persons, Places, and Foes) are discarded, and the player's log book emptied.</p>
+<p>Every well-written side quest usually has an end to it. Many quests employ the common idiom of a set time to complete the quest in, and self-terminate if the job isn't completed in time.</p>
+<pre><code>Clock \_timeLimit\_ 7.0:0 11.0:0
+
+\_timeLimit\_ task:
+    end quest
+</code></pre>
+<p>specifies a time limit of 7 to 11 days for the quest. If the PC hasn't made good on the quest goal in that time, the quest ends when that clock runs down.</p>
+<hr>
+<h3 id="receiving-items-silently">Receiving items silently</h3>
+<pre><code>get item anItem
+get item anItem from anNPC
+</code></pre>
+<p>These actions bestow a quest-related item directly into the PC's inventory without notifying the player of the transaction. That doesn't mean a previous or subsequent action can't inform the PC about the event, just that the player isn't required to manipulate an item using the inventory screen to pick up a quest item from <code>(See [give item](#givepc)</code> to bestow an item through the inventory picklist)</p>
+<p><em>Get item from</em> is similar, but specifies a particular NPC to obtain the item from. However there is no action to bestow an item on an NPC. Unless this action also checks for the presence of the NPC in the player's vicinity before bestowing the item, it behaves just the same as omitting the from clause.</p>
+<p>(This action appears only in one quest from Bethesda, <strong>s0000008</strong>, if you give the totem to King Gothryd his gold reward is bestowed via this action.)</p>
+<p>Items bestowed via get item do not lose their quest-related green backdrop in the player's inventory contents. I've never given the totem to Gothryd so I can't say how the reward is handled in that case.</p>
+<p>_foundHealer_ task:
+clicked _healer_</p>
+<p>_buyAmulet_ task:
+clicked _healer_ and at least 20 gold otherwise do _tooPoor_
+say 1013
+get item talisman
+log 1017 step 2</p>
+<p>_tooPoor_ task:
+say 1015
+clear _foundHealer_ _buyAmulet_ _tooPoor_</p>
+<p>This is a common idiom for buying a quest-related item from a quest NPC. If the PC approachs the quest NPC with enough cash (20 gold in this case), the PC gets a quest item after giving up the gold. If the PC is too poor, the NPC chides him and the three tasks associated with the transaction are cleared to ensure they will be executed again if the PC approaches the NPC again (presumably after getting ahold of more cash)</p>
+<hr>
+<h3 id="hiding-items-with-an-enemy">Hiding items with an enemy</h3>
+<pre><code>give item anItem to aFoe
+</code></pre>
+<p>This action bestows a quest-related item in the inventory of a quest foe. Once bestowed, the PC can obtain the item by using his pick-pocket skill on the foe. Or the PC can obtain the item from the corpse of the foe once it is dead.</p>
+<p>The item retains its quest-related status when the PC recovers it.</p>
+<p>To remove a quest item after its initial bestowal, see <code>[take item](#moveto)</code>.</p>
+<hr>
+<h3 id="receiving-items-permanently">Receiving items permanently</h3>
+<pre><code>give pc anItem
+</code></pre>
+<p>This action bestows one or more quest items through the inventory screen. Once the PC transfers an item to his inventory, that item loses its green backdrop and becomes just another piece of the player's property.</p>
+<p>Using this action triggers the display of the Qrc <em>QuestComplete</em> message, as though the command is always preceded by an unwritten <em>say QuestComplete</em> command.</p>
+<hr>
+<h3 id="receiving-a-quest-item-with-notification">Receiving a quest item with notification</h3>
+<pre><code>give pc anItem notify nnnn
+</code></pre>
+<p>This action bestows a quest item directly into the PC's inventory along with a speech from a Qrc message block. The item remains part of the quest with a green backdrop. Typically this action is used to deliver letters to the PC during the quest, or to start out a quest by letter.</p>
+<p>Note that this action does not trigger the <em>QuestComplete</em> message.</p>
+<hr>
+<h3 id="giving-the-pc-nothing">Giving the PC nothing</h3>
+<pre><code>give pc nothing
+</code></pre>
+<p>Some quests appear to give the PC nothing.</p>
+<p>Using this action can trigger the display of the <em>QuestComplete</em> message. Possibly in conjunction with <em>click aQuestor</em> or <em>drop aQuestor as questor</em> conditions.</p>
+<hr>
+<h3 id="hiding-npcs-from-the-player-character">Hiding NPCs from the player character</h3>
+<pre><code>hide npc anNPC
+</code></pre>
+<p>This action removes the specified quest NPC sprite from the game world. See <code>[restore npc](#clickable)</code> action to replace the NPC sprite.</p>
+<p>Hidden NPCs are invisible to the player character, but any Qrc messages associated with that NPC will work properly; the PC is just unable to see the NPC anywhere in the game world.</p>
+<hr>
+<h3 id="changing-the-players-legal-repute">Changing the player's legal repute</h3>
+<pre><code>legal repute nn
+</code></pre>
+<p>This action modifies the legal standing of the PC in the current province, or the province where the quest containing this action was obtained. Positive values increase the PC's repute, while negative numbers decrease it. The change is relative to the PC's present legal standing in the province, not an absolute state.</p>
+<p>_failedQuest_ task:
+legal repute -15</p>
+<p>In this quest fragment, if the PC fails to meet the goals of the quest, his repute in the province loses 15 points.</p>
+<hr>
+<h3 id="location-aplace-number1-number2">location aPlace number1 number2</h3>
+<p>The operation of this action is unknown. It appears in the quest startup for two quests: <em>b0c00y13</em> (exterminate the vermin) and <em>a0c10y05</em> (shotgun wedding).</p>
+<p>number2 is approximately the number of game minutes allotted to the duration of the quest.</p>
+<p>number1 seems to be a percentage, and is 100 in both examples.</p>
+<p>This appears to serve as an `attractor' for created foes, to direct them to the location where the PC is supposed to encounter them in the quest, rather than relying on their pathfinding skills.</p>
+<hr>
+<h3 id="entering-messages-in-the-log-book">Entering messages in the log book</h3>
+<pre><code>log nnnn step i
+</code></pre>
+<p>This action adds a Qrc message nnnn to the player's log book as the ith entry for this quest. Quest entries number from 0. A log action which reuses an entry number i replaces the previous log entry for that step with the current one.</p>
+<p>Since the PC may undertake several quests simultaneously, the <strong>X-engine</strong> uses the entry number to collect the messages of one quest in the same area of the log book.</p>
+<p>When the quest ends, the log entries added by the quest are removed from the log book.</p>
+<p>The number of active steps a single quest is limited to 10, so i must be between 0 and 9.</p>
+<p>Also note, the number of concurrently active quests is limited to at most 32 quests.</p>
+<p>Message: 1020
+%qdt:
+I have accepted a quest from _qgiver_.</p>
+<p>Message: 1021
+%qdt:
+A friend of _qgiver_ has directed me to __house_.</p>
+<p>Message: 1022
+%qdt:
+I've discovered  _qgiver_'s _item_ might be hidden
+in ___dungeon_.</p>
+<p>--  Quest startup:
+log 1020 step 0</p>
+<p>when clicked _friend_
+log 1021 step 1</p>
+<p>when used _letter_
+log 1022 step 1</p>
+<p>When this quest begins, message 1020 is added to the player's log book as the first message of this quest. Once the PC locates the quest giver's friend, a second message, 1021 is added to the log book. Later, once the PC reads a quest-related letter, this second message is replaced with message 1022.</p>
+<p>See the <code>[remove log step](#changeglobal2)</code> action to obliterate a log book entry.</p>
+<hr>
+<h3 id="making-quest-items-permanent">Making quest items permanent</h3>
+<pre><code>make anItem permanent
+</code></pre>
+<p>This action removes the green backdrop from a quest-related item in the player's inventory, converting it into a permanent item that persists after the quest terminates.</p>
+<hr>
+<h3 id="infecting-the-player">Infecting the player</h3>
+<p>make pc ill with aDisease</p>
+<p>This action infects the PC with a disease. Known diseases are</p>
+<p>Blood_Rot</p>
+<p>Brain_Fever</p>
+<p>Caliron's_Curse</p>
+<p>Cholera</p>
+<p>Chrondiasis</p>
+<p>Consumption</p>
+<p>Dementia</p>
+<p>Leprosy</p>
+<p>Plague</p>
+<p>Red_Death</p>
+<p>Stomach_Rot</p>
+<p>Swamp_Rot</p>
+<p>Typhoid_Fever</p>
+<p>Witches'_Pox</p>
+<p>Wizard_Fever</p>
+<p>Wound_Rot</p>
+<p>Yellow_Fever</p>
+<p>You <em>cannot</em> use this action to infect the player with <em>lycanthropy</em> or <em>vampirism</em>.</p>
+<hr>
+<h3 id="controlling-npc-responses">Controlling NPC responses</h3>
+<pre><code>mute npc anNPC
+</code></pre>
+<p>This action causes the indicated NPC to ignore mouse clicks from the player in the game world.</p>
+<hr>
+<h3 id="selecting-tasks-randomly">Selecting tasks randomly</h3>
+<pre><code>pick one of aTaskName1 aTaskName2 aTaskName3 aTaskName4
+</code></pre>
+<p>This action randomly selects one of the tasks for activation. The choice is evenly selected over the tasks, but you can skew the selection by repeating the same task.</p>
+<pre><code>pick one of task1 task2 task3
+</code></pre>
+<p>gives the PC equal odds of getting <em>task1</em>, <em>task2</em> or <em>task3</em> while</p>
+<pre><code>pick one of task1 task2 task2 task2
+</code></pre>
+<p>weights the odds 75% in favor of <em>task2</em>.</p>
+<hr>
+<h3 id="creating-guard-foes">Creating guard foes</h3>
+<pre><code>place aFoe at aPlace
+</code></pre>
+<p>No, not the <em>Halt! Halt!</em> variety, unfortunately.</p>
+<p>This action installs a quest foe or mob of foes at a quest location. Quest-related foes won't appear in a quest until this action is taken to position them within the game world. (But see <code>[create foe](#createfoe)</code>)</p>
+<p>Guard foes loiter around the particular location, waiting for the PC to turn up, unlike the <em>create foe</em> variety, who tend to stalk down the PC to pick a fight.</p>
+<hr>
+<h3 id="creating-a-quest-item-at-a-place">Creating a quest item at a place</h3>
+<pre><code>place anItem at aPlace
+</code></pre>
+<p>This action installs a quest item at a quest location. The item generally appears as itself in the game world, rather than as a random treasure pile.</p>
+<p>Quest-related items don't automatically appear in the game world.</p>
+<hr>
+<h3 id="moving-npcs-around">Moving NPCs around</h3>
+<pre><code>place anNPC at aPlace
+</code></pre>
+<p>This action installs a quest NPC at a quest location in the game world. Unlike foes and items, NPCs will appear in the game world at their birthplace when the quest begins. But the quest is free to relocate them elsewhere during the progress of the quest.</p>
+<hr>
+<h3 id="playing-sounds">Playing sounds</h3>
+<pre><code>play sound aSound every time1 minutes time2 times
+play sound aSound time1 time2
+</code></pre>
+<p>This action plays one of the 459 <strong>Daggerfall</strong> sound effects once every time1 game minutes while the task containing the <em>play sound</em> command is active. Specifying time2 doesn't seem to have any effect on the behavior of the command, though.</p>
+<p>Only the first form will accept one of the catalogued names for a sound effect, although the pure number for the effect may be used with either form.</p>
+<p>Every model creature in Daggerfall has three separate sound effects associated with it: <em>distant</em>, <em>nearby</em>, and <em>in combat</em>. Other sound effects include various environmental conditions, like barking dogs, slamming doors, and, of course, <em>Halt! Halt!</em></p>
+<p>There are symbolic names for all the model creature sounds, but I haven't yet completed the environmental catalog, whose interpretation is much more subjective as to what to call the collection of assorted grunts, wheezes, and eerie noises.</p>
+<p>Also, all the sound effects from <strong>TES1, Arena</strong> appear to be present. So if you've missed <strong>Fire Daemons</strong> or <strong>Iron Golems</strong>, you can at least use their respective noises.</p>
+<p>I'll include a proper table of sound names, once the inventory is completed, but for the nonce, please see <em>sounds.src</em> for the catalog of known sound effects.</p>
+<hr>
+<h3 id="playing-video-clips">Playing video clips</h3>
+<pre><code>play video nn
+</code></pre>
+<p>This action plays a prerecorded video clip associated with the main story quest. nn indicates which of the <em>anim00_nn</em>.vid_ clips in the <strong>arena2</strong> directory to use.</p>
+<p>The standard quests from Bethesda mention videos 3, 5-10, 13-15, so 0-2, 4, 11, 12 are either played automatically at certain milestones, like player death or 'bite me', or have never before been seen.</p>
+<hr>
+<h3 id="prompting-the-player">Prompting the player</h3>
+<pre><code>prompt nnnn yes aTaskName1 no aTaskName2
+</code></pre>
+<p>This action prompts the player for a <em>yes-or-no</em> response by displaying the Qrc message nnnn in a dialog box with a <em>yes</em> and a <em>no</em> button for the player to click.</p>
+<p>If the player clicks the yes button, aTaskName1 is activated. On the other hand, if the player clicks the no button, aTaskName2 is activated.</p>
+<hr>
+<h3 id="restraining-foes-in-the-game-world">Restraining foes in the game world</h3>
+<pre><code>restrain foe aFoe
+</code></pre>
+<p>This action restrains the specified quest foe from attacking the PC. However, if the PC subsequently injures the foe, it will resume its attack on the PC.</p>
+<hr>
+<h3 id="deleting-a-log-book-entry">Deleting a log book entry</h3>
+<pre><code>remove log step nn
+</code></pre>
+<p>This action removes an entry inserted in the player's log book by a previous <code>[log step](#log)</code> action.</p>
+<hr>
+<h3 id="controlling-npc-sprites">Controlling NPC sprites</h3>
+<pre><code>restore anNPC
+</code></pre>
+<p>This action restores the indicated NPC sprite in the game world. Typically it follows a preceding <code>[hide npc](#removenpc)</code> task to make the NPC invisible, but still present so any Qrc blocks referring to the NPC still behave properly, but the PC will be unable to locate the NPC physically.</p>
+<hr>
+<h3 id="adding-dungeons-to-the-province">Adding dungeons to the province</h3>
+<pre><code>reveal aPlace
+</code></pre>
+<p>This action reveals a remote dungeon associated with a quest on the fast travel map of the current province.</p>
+<hr>
+<h3 id="adding-dungeons-to-the-world-map">Adding dungeons to the world map</h3>
+<pre><code>reveal aPlace in province aProvince# at magicNumber
+</code></pre>
+<p>This action adds a previously invisible location to the world map. aProvince# is the number for the province map on which to reveal aPlace. magicNumber is the key to the entry for aPlace in the <strong>Map Table</strong> of the specific province.</p>
+<p>Magic numbers for hidden dungeon sites can be determined from the entries in arena2/maps.bsa. You can use the `atlas' tool to create a prototype of a reveal command for any location on the fast travel map. For completeness, the method is explained below, but using the `atlas' tool is usually easier and less error-prone.</p>
+<p>Each province has four (4) members in maps.bsa: <em>mapnames.###</em>, <em>maptable.###</em>, <em>mappitem.###</em>, and <em>mapditem.###</em>, where <em>###</em> is the number of a specific <strong>Daggerfall</strong> province.</p>
+<p>The mapnames entry for tbe desired dungeon can be used to determine the maptable entry with the proper magic number for it in the following way:</p>
+<ol>
+<li>Find the offset in <em>mapnames</em> where the desired dungeon name begins</li>
+<li>Subtract 4 from the offset and divide by 32. The remainder should be 0.</li>
+<li>Multiply the quotient by 17.</li>
+<li>This is the proper offset in maptable from which to obtain the magic number. (Offsets are numbered from 0)</li>
+<li>The five hexadecimal digits starting from offset are used to make the magic number.</li>
+<li>Write down the 5 hexadecimal digits from left to right.</li>
+<li>Reverse the byte order of these three `virtual' bytes.</li>
+<li>This is the magic number to use with the reveal action. Preface this number with 0x to make the scenario compiler accept base 16 integers.</li>
+</ol>
+<p>Here is the method applied to <em>Castle Necromoghan</em> in <em>Daggerfall</em> province. <em>Daggerfall</em>'s province number is 17, so we're interested in the maptable.017 and mapnames.017 members of maps.bsa.</p>
+<p>Searching mapnames.017 for <em>Castle Necromoghan</em> shows 0x124 for the first offset.<br>
+((0x124 - 4) / 32) * 17 = 0x99.<br>
+Looking at offset 0x99 in maptable.017 shows 8f 08 2.<br>
+Reversing the bytes we get 0x2088f or 133263 decimal. So the reveal command would be</p>
+<pre><code>reveal aPlace in province 17 at 133263
+</code></pre>
+<h3 id="adding-an-explicit-rumor">Adding an explicit rumor</h3>
+<pre><code>rumor mill nnnn
+</code></pre>
+<p>This action adds the Qrc message block nnnn to the set of rumors that an NPC may respond with when asked about <em>Any News</em> in the dialog screen.</p>
+<p>Be aware, however, that its selection is random. If you put &quot;mission critical&quot; information in such a Qrc block with this command, it may take the PC many chat sessions to extract the response. It would be convenient if a high etiquette skill improved the odds of getting the response out of the NPC.</p>
+<hr>
+<h3 id="message-box">Message box</h3>
+<pre><code>say nnnn
+</code></pre>
+<p>This action displays a Qrc message block in the game world. If you've used message section labels to number message blocks automatically, you can use either the actual message number or the label to refer to that text.</p>
+<hr>
+<h3 id="creating-waves-of-attacking-foes-1">Creating waves of attacking foes</h3>
+<pre><code>send aFoe every m minutes n times with k% success
+</code></pre>
+<p>The <em>send foe</em> command operates like the <code>[_create foe_](#createfoe)</code> command, but limits the spawning of <em>aFoe</em> to the times when the player is above ground, generally near towns.</p>
+<pre><code>Foe \_zombie\_ is Zombie
+
+\_doneCyndassa\_ task:
+    quest 7 completed
+
+\_deliverLetter\_ task:
+	when \_doneWith7\_
+    send \_zombie\_ every 1410 minutes -1 times with 100% success
+</code></pre>
+<p>is an excerpt from the main story where the <strong>King of Worms</strong> delivers his invitation to revisit <strong>Scourg Burrow</strong> at the start of the <em>Soul of the Lich</em> quest.</p>
+<hr>
+<h3 id="starting-other-quests">Starting other quests</h3>
+<pre><code>start quest nnnn mmmm
+</code></pre>
+<p>This action starts up one or more quests from the S000_nnnn_ family of quests. In the existing quests from Bethesda, <em>nnnn</em> and <em>mmmm</em> are always the same number.</p>
+<hr>
+<h3 id="starting-a-task-in-another-quest">Starting a task in another quest</h3>
+<pre><code>start task  aTaskName
+</code></pre>
+<p>It is possible for an event in one quest to interact with an event in a seperate quest by using global tasks.</p>
+<p>When quest <strong>A</strong> assigns actions to a global task number, quest <strong>B</strong> can request the activation of that global task in quest <strong>A</strong>.</p>
+<p>Of course, for this to work out right, the authors of both quests must arrange beforehand which global task number to use to synchronize their quests. And they must also arrange to select a global task number that won't conflict with any other global tasks already in progress.</p>
+<p>A quest that wants to make one of its tasks globally available must declare that task globally:</p>
+<p>variable _synchronize_ global 25
+log 1101 step 2
+start _myClock_
+:
+:</p>
+<p>And a task that wants to activate another quest's actions must declare the same global variable then activate it at the appropriate time.</p>
+<pre><code>variable \_theChase\_ global 25
+
+\_resumeOtherQuest\_ task:
+  clicked \_myNpc\_
+  start task \_theChase\_
+</code></pre>
+<p>which would then start the _synchronize_ step in the other quest.</p>
+<p>Note that there may be more than one other quest listening to the same global variable.</p>
+<p>The main quest uses 0-4, 6-9, 11-14, 16-18, 21, 23, 25, 28-29, 31, 33, 36, and 42-43 for global task numbers.</p>
+<p>The following table documents the function of the global states used by the main quest.</p>
+<p>LiftedCurse</p>
+<p>0</p>
+<p>GothrydGotTotem</p>
+<p>1</p>
+<p>KingOfWormsGotTotem</p>
+<p>2</p>
+<p>GortwogGotTotem</p>
+<p>3</p>
+<p>AkorithiGotTotem</p>
+<p>4</p>
+<p>TookTheCure</p>
+<p>5[1]</p>
+<p>UnderkingGotTotem</p>
+<p>6</p>
+<p>EadwyreGotTotem</p>
+<p>7</p>
+<p>BrisiennaGotTotem</p>
+<p>8</p>
+<p>MedoraGotHorn</p>
+<p>9</p>
+<p>GothrydEnding</p>
+<p>11</p>
+<p>OpenedShapeshifters</p>
+<p>10[1]</p>
+<p>KingOfWormsEnding</p>
+<p>12</p>
+<p>GortwogEnding</p>
+<p>13</p>
+<p>AkorithiEnding</p>
+<p>14</p>
+<p>UnderkingEnding</p>
+<p>16</p>
+<p>EadwyreEnding</p>
+<p>17</p>
+<p>BrisiennaEnding</p>
+<p>18</p>
+<p>UnknownElysanna</p>
+<p>21</p>
+<p>MorgiahSatisfied</p>
+<p>23</p>
+<p>ElysannaSatisfied</p>
+<p>25</p>
+<p>BarenziahSatisfied</p>
+<p>28</p>
+<p>MyniseraSatisfied</p>
+<p>29</p>
+<p>MetLadyBrisienna</p>
+<p>31</p>
+<p>KingOfWormsSatisfied</p>
+<p>33</p>
+<p>FinishedMantellanCrux</p>
+<p>36</p>
+<p>UnknownHelseth</p>
+<p>42</p>
+<p>LysandusSatisfied</p>
+<p>43</p>
+<p>[1]Used by <strong>Werefall</strong></p>
+<p>Presumably the residual numbers 5, 10, 15, 19, 20, 22, 24, 26, 27, 30, 32, 34, 35, 37-41 can be used by any quests you choose to create.</p>
+<p>There are, in fact, 64 global variables. Their current values are stored in consecutive bytes in <em>savevars.dat</em>, beginning at offset 0x34f (0-based).</p>
+<hr>
+<h3 id="starting-a-clock">Starting a clock</h3>
+<pre><code>start timer aClock
+</code></pre>
+<p>This action (re)starts the specified timer.</p>
+<hr>
+<h3 id="stopping-a-clock">Stopping a clock</h3>
+<pre><code>stop timer aClock
+</code></pre>
+<p>This action stops the specified timer, without triggering the actions scheduled by its alarm task.</p>
+<hr>
+<h3 id="removing-quest-items">Removing quest items</h3>
+<pre><code>take anItem from pc
+</code></pre>
+<p>This action removes a previously created quest item <code>(see the [get/give](#getitem) series of actions or [place anItem](#placeitem)</code> to create a quest-related item) from the player's inventory, and from the game world.</p>
+<hr>
+<h3 id="teleporting-the-pc">Teleporting the PC</h3>
+<pre><code>teleport pc to aPlace
+transfer pc inside aPlace  province#  magicNumber
+</code></pre>
+<p>You can relocate the PC to another position in the current province by using the teleport pc form of the command. Existing quests use this to relocate the PC to a remote dungeon trap in the same province, as though the teleport spell anchor were placed there.</p>
+<p>It isn't known whether this form of the command will teleport the PC to permanent sites.</p>
+<p>The alternate form, transfer pc, is used at the end of the main story when Nulfaga teleports the PC to the final dungeon of the Mantellan Crux. It is also used to return the PC to Nulfaga when the Crux quest is completed.</p>
+<p>province# and magicNumber are determined as for the <code>[reveal command.](#revealglobal)</code></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -33,6 +33,22 @@
 
 - name: Quest Writing
   href: QuestWriting.md
+  items:
+  - name: Quest Compiling and Decompiling
+    href: QuestCompiling.md
+  - name: Quest Organization
+    href: QuestOrganization.md
+  - name: Quest Conditions And Responses
+    href: QuestConditions.md
+  - name: Quest Actions
+    href: QuestActions.md
+  - name: Common Pitfalls
+    href: QuestPitfalls.md
+  - name: Reusing Quest Elements
+    href: QuestReusingElements.md
+  - name: Sample Quests
+    href: QuestSamples.md
+
 
 - name: Tutorials
   href: Tutorials.md

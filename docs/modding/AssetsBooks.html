@@ -69,7 +69,32 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="books">Books</h1>
 
-<p>PLACEHOLDER</p>
+<p>Daggerfall books are located inside <em>arena2\books</em> and can be edited with <strong>DFBOOEDT</strong>, available as a part of <strong>DFTools</strong> package, found at <a href="https://en.uesp.net/wiki/Daggerfall:Files">Uesp</a>.</p>
+<h2 id="import-books">Import books</h2>
+<p>Custom book files can be provided from loose files inside <em>StreamingAssets/Books</em>, for example <em>StreamingAssets/Books/BOK00000.TXT.</em> Alternatively, they can be bundled in a .dfmod as an asset with <strong>.bytes</strong> extension, for example <em>BOK00000.TXT.bytes.</em></p>
+<h2 id="declare-new-books">Declare new books</h2>
+<p>New books must be declared with a json file defined as follow:</p>
+<pre><code>[{
+   &quot;Name&quot;: &quot;ExampleBook.TXT&quot;,
+   &quot;Title&quot;: &quot;An Example Book&quot;,
+   &quot;ID&quot;: 1531909675
+}]
+</code></pre>
+<ul>
+<li><strong>Name</strong> is the filename.</li>
+<li><strong>Title</strong> is a readable name for the book, shown in game.</li>
+<li><strong>ID</strong> An unique ID for the book between 1 and 2147483647</li>
+<li><strong>IsUnique</strong> If true this book is not found inside random loots or bookshelves and must be made available directly by mods.</li>
+<li><strong>WhenVarSet</strong> Book is available only when a global variable is set.</li>
+</ul>
+<p>This file must be placed</p>
+<ul>
+<li>inside _StreamingAssets/Books/Mapping (_<em>StreamingAssets/Books/Mapping/ExampleBooksPack.json).</em></li>
+<li>bundled inside a mod (.dfmod) inside a directory that ends with <em>Books/Mapping</em> (for example <em>Assets/Game/Mods/MyMod/Books/Mapping/ExampleBooksPack.json</em>).</li>
+</ul>
+<p>You can instantiate a book item in game with <a href="../api/DaggerfallWorkshop.Game.Items.ItemBuilder.html#DaggerfallWorkshop_Game_Items_ItemBuilder_CreateBook_System_Int32_">the following method call</a>.</p>
+<pre><code>GameManager.Instance.PlayerEntity.Items.AddItem(ItemBuilder.CreateBook(&quot;ExampleBook&quot;));
+</code></pre>
 </article>
           </div>
           

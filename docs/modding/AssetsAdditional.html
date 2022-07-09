@@ -69,7 +69,39 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="additional-resources">Additional Resources</h1>
 
-<p>PLACEHOLDER</p>
+<h2 id="sound-fonts">Sound Fonts</h2>
+<p>The sound font used by Daggerfall Unity can be overridden with custom <strong>SF2</strong> files placed inside the folder <em>StreamingAssets/SoundFonts</em>. The current active sound font is defined by the configuration key <em><strong>SoundFont</strong></em> under <em><strong>Audio</strong></em> section.</p>
+<pre><code>[Audio]
+SoundFont = AweROMGM.sf2
+</code></pre>
+<p>If the sound font is not loaded succesfully the game attempts to fallback to the internal one.</p>
+<h2 id="spell-icons">Spell Icons</h2>
+<p>Classic spells icons can be replaced like other images used in game. Additionally, new icons can be provided with <strong>spell icon packs</strong>, composed of an atlas of icons and a metadata file.</p>
+<p>Icons packs can be installed in the folder <em>StreamingAssets/SpellIcons</em>. The atlas must use <strong>png</strong> format and extension while metadata is in the shape of a json file with the same name of the atlas and <em>.txt</em> extension.</p>
+<pre><code>{
+    &quot;displayName&quot;: &quot;Example Test Pack&quot;,
+    &quot;rowCount&quot;: 2,
+    &quot;iconCount&quot;: 2,
+    &quot;filterMode&quot;: &quot;Bilinear&quot;,
+    &quot;icons&quot;: [
+        {
+            &quot;index&quot;: 0,
+            &quot;suggestedEffects&quot;: null
+        },
+        {
+            &quot;index&quot;: 1,
+            &quot;suggestedEffects&quot;: null
+        }
+     ]
+}
+</code></pre>
+<p>Icons packs can also be provided by mods when bundled inside a directory ending with <em>Assets/SpellIcons</em> (i.e. <em>Assets/Game/Mods/ExampleMod/Assets/SpellIcons</em>). An icon pack is composed of a texture asset (with any extension) and a metadata text asset (with the same format used for loose files) with <em>.json</em> extension.</p>
+<p>If a pack is removed the game fallbacks to classic icons.</p>
+<h2 id="text-fonts">Text Fonts</h2>
+<blockquote>
+<p>Since July 2019 (v0.10.26-alpha), fonts in Daggerfall Unity are now standard Unity TextMeshPro (TMP) fonts internally and font replacements are part of the Localization features.</p>
+</blockquote>
+<p>Daggerfall Unity supports <strong>Signed Distance Field</strong> fonts and allows to provide custom overrides with the folder <em>StreamingAssets/Fonts</em>. For a guided explanation on the creation process read <a href="https://www.dfworkshop.net/creating-sdf-fonts-for-daggerfall-unity/">Creating SDF Fonts For Daggerfall Unity</a>.</p>
 </article>
           </div>
           

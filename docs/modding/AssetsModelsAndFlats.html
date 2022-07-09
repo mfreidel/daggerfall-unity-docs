@@ -69,7 +69,110 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="models-and-flats">Models And Flats</h1>
 
-<p>PLACEHOLDER</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p><a href="http://www.dfworkshop.net/downloads/daggerfall-modelling/">Daggerfall Modelling</a>
+: Explores and exports all of Daggerfall’s 3D models, cities, and dungeons.<br>
+Works like a visual atlas for searching and exploring anywhere in Daggerfall’s world.</p>
+<p><a href="http://www.dfworkshop.net/downloads/daggerfall-imaging/">Daggerfall Imaging 2</a>
+: Opens and exports Daggerfall’s image files, including billboard textures.</p>
+<p><a href="http://www.dfworkshop.net/projects/daggerfall-tools-for-unity/">Daggerfall Tools for Unity</a>
+: The code library that interfaces between Daggerfall’s DOS game files and Daggerfall Unity. The included Importer allow to explore specifics models and billboards (disable Billboard Batch) as well as towns and dungeons layouts.</p>
+<blockquote>
+<p>Your best option is to download the full source code for <a href="https://github.com/Interkarma/daggerfall-unity">Daggerfall Unity from Github</a> (<a href="https://www.youtube.com/watch?v=Okv_NTSg2rw">video tutorial</a>), as it contains all the tools and it allows to test models directly in game.</p>
+</blockquote>
+<h2 id="core-features">Core Features</h2>
+<h3 id="common">Common</h3>
+<p>Once you have the Unity Editor running, you can import a model placing a fbx or obj file in a subfolder of  <em>Assets</em>, for example <em>Assets/Resources/Models</em>, <em>Assets/Resources/Flats</em> or <em>Assets/Game/Addons/MyMod</em>. You can find all required information about Unity and Models <a href="https://docs.unity3d.com/560/Documentation/Manual/HOWTO-importObject.html">at this page</a>, but here are provided the essential parts.</p>
+<ul>
+<li>Models exported from Daggerfall Modelling are forty times bigger than they need to be in order to be used in Unity, so you need to scale them down by 0.025.</li>
+<li>Unity engine reads models as <a href="https://docs.unity3d.com/560/Documentation/Manual/HOWTO-FixZAxisIsUp.html">Y-up not Z-up</a> so you need to address this in your modelling software. If is blender, you can use <a href="https://forum.unity3d.com/threads/blender-unity-rotation-fix.181870/">this plugin</a>.</li>
+<li>Your model can’t have more than 65,534 vertices. If needed, split your model in several parts and put them together inside a prefab. You can also include additional components such as lights and particle effects.</li>
+<li>If the model is supposed to collide with the player, check <em>Generate colliders</em> in the <a href="https://docs.unity3d.com/560/Documentation/Manual/UsingTheInspector.html">mesh inspector</a> inside the Unity editor.</li>
+<li>When you replace an exterior model, is a good idea to provide a <a href="https://docs.unity3d.com/550/Documentation/Manual/class-LODGroup.html">LOD Group</a>.</li>
+<li>Wind is natively supported for <a href="https://docs.unity3d.com/550/Documentation/Manual/SpeedTree.html">SpeedTrees</a> and trees created with the <a href="https://docs.unity3d.com/550/Documentation/Manual/class-Tree.html">Unity Tree Creator</a>. Additionally, it can affect particle systems through the <a href="https://docs.unity3d.com/550/Documentation/Manual/PartSysExtForceModule.html"><em>External Forces</em> module</a>.</li>
+<li>When you build a mod you only need to pack this parent mesh/prefab; children such as meshes, materials, particle effects etc. are automatically imported.</li>
+<li>Materials named <em>Archive_Record-0</em> will be affected by custom textures provided by loose files.</li>
+</ul>
+<h3 id="models">Models</h3>
+<p>Model replacements included with a mod are automatically searched by filename, which must correspond to the numeric index as shown by Daggerfall Modelling.</p>
+<p><a href="http://www.dfworkshop.net/wp-content/uploads/2017/04/models_replacement_1.jpg"><img src="http://www.dfworkshop.net/wp-content/uploads/2017/04/models_replacement_1.jpg" alt=""></a></p>
+<p>Replacements aren’t limited to static meshes. Any <em>GameObject</em> (<em>Prefab</em> when serialized in editor) is supported, provided that all components on the object are known by the game (the topic of custom components is addressed <a href="https://www.dfworkshop.net/projects/daggerfall-unity/modding/features/#asset-loading">here</a>). For example, this means that you can include particle systems or additional lights.</p>
+<p>There is a standard naming to support Daggerfall season and climate variations, as shown in the list below:</p>
+<ol>
+<li>ID</li>
+<li>ID_ClimateSeason <em>(1)</em></li>
+</ol>
+<p><em>(1) Desert has no seasons: use ID_Desert.</em></p>
+<p><strong>Climates</strong></p>
+<ul>
+<li>Desert</li>
+<li>Mountain</li>
+<li>Temperate</li>
+<li>Swamp</li>
+</ul>
+<p><strong>Seasons</strong></p>
+<ul>
+<li>Fall</li>
+<li>Spring</li>
+<li>Summer</li>
+<li>Winter</li>
+</ul>
+<p>The base name is used as a per-mod fallback, following load order. The base name (meaning the ID) matches everything. For example a mod that only provides base models can be extended by other mods with specific seasons and climates, while the base model is still used for the non-provided seasons and climates. But if mod with base is loaded in a lower position, load order is respected and “overrides” everything.</p>
+<h3 id="flats">Flats</h3>
+<p><img src="http://www.dfworkshop.net/wp-content/uploads/2017/04/flats_replacement_0-300x150.png" alt="">]</p>
+<p>The original game used billboards (<em>sprites</em>) to render characters, enemies, animals and small props instead of 3d models. While is possible to <a href="https://www.dfworkshop.net/projects/daggerfall-unity/modding/textures/#billboards">only replace billboard textures</a>, providing a full 3d replacement is also supported. Prefabs must be named <strong>archive_record</strong>, as they appear from <strong>Daggerfall Imaging</strong>, and bundled in a mod as usual.</p>
+<p>These models are placed in game assuming the origin is at the center of their base, while rotation on the up axis is randomized to make up for the camera-following movement of 2d billboards (this process can be customized via scripting by adding a component that extends <em>IObjectPositioner</em>).</p>
+<h3 id="mobile-person-assets">Mobile Person Assets</h3>
+<p>It is possible to write a <em>Monobehaviour</em> class that handles the instantiation process for npcs graphic assets, meaning the people that wanders around towns. This component must inherit from <a href="https://thelacus.github.io/daggerfall-unity-docs/api/DaggerfallWorkshop.MobilePersonAsset.html">MobilePersonAsset</a> and be added to a prefab named <em>MobilePersonAsset</em>. This component will serve as a provider for wandering npcs, replacing  <a href="https://thelacus.github.io/daggerfall-unity-docs/api/DaggerfallWorkshop.MobilePersonBillboard.html">MobilePersonBillboard</a> class.</p>
+<pre><code>using UnityEngine; using DaggerfallWorkshop;
+using DaggerfallWorkshop.Game.Entity;
+using DaggerfallWorkshop.Game.Utility.ModSupport;
+
+namespace MobilePersonCubeMod
+{
+[ImportedComponent]
+public class MobilePersonCube : MobilePersonAsset
+{
+    MeshRenderer meshRenderer;
+
+    public override bool IsIdle { get; set; }
+
+    private void Awake()
+    {
+        meshRenderer = GetComponent&lt;MeshRenderer&gt;();
+    }
+
+    public override void SetPerson(Races race, Genders gender, int personVariant, bool isGuard, int personFaceVariant, int personFaceRecordId)
+    {
+        Vector3 size = GetSize();
+        Trigger.height = size.y * 1.2f;
+        Trigger.radius = size.x * 1.2f;
+    }
+
+    public override Vector3 GetSize()
+    {
+        return meshRenderer.bounds.size;
+    }
+}
+}
+</code></pre>
+<h2 id="advanced">Advanced</h2>
+<h3 id="object-positioner">Object Positioner</h3>
+<p>A component named <strong>ObjectPositioner</strong> can be added to a prefab to fix bad placement issues. This component has a <strong>direction</strong> property, which is the local space oriented axis along which the asset is transitioned.</p>
+<p><a href="https://www.dfworkshop.net/wp-content/uploads/2019/04/55683532-0ac5eb00-5941-11e9-9b74-0c89bce06100.png"></a></p>
+<p>Custom positioning can also be achieved with a custom component that implements the <strong>IObjectPositioner</strong> interface.</p>
+<h3 id="wall-prop-positioner">Wall Prop Positioner</h3>
+<p><strong>WallPropPositioner</strong> component can be used to align models, such as torches, to the nearest wall instead of default random rotation.</p>
+<h3 id="daynight">DayNight</h3>
+<p><strong>DayNight</strong> can be used to toggles lights/particles on a prefab at night or change the color of emission maps. See the tooltips on each attribute for more informations.</p>
+<blockquote>
+<p>Note: default day color for emission maps is #406E80, while default night color is #CC922D.</p>
+</blockquote>
+<h3 id="doors">Doors</h3>
+<h4 id="exteriors">Exteriors</h4>
+<p>Transition from exterior to interior is implemented through a collider placed in the same position as the door on the mesh. The component <strong>CustomDoor</strong> allows to defines door positions using triggers at a different position.</p>
+<h4 id="interiors">Interiors</h4>
+<p>There are two prefabs for doors, <strong>DaggerfallActionDoor [Interior]</strong> and <strong>DaggerfallActionDoor [Dungeon]</strong>, both of them placed inside <strong>Assets/Prefabs/Scene</strong>. The entire action door prefab is replaced when models with the corresponding  model ID are provided, so mod authors need to ensure that <strong>DaggerfallActionDoor</strong>, <strong>DaggerfallAudioSource</strong> and other required components (or compatible replacements) are present.</p>
 </article>
           </div>
           

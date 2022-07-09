@@ -518,7 +518,6 @@ For example &quot;Assets/Textures&quot; matches &quot;Water.png&quot; from &quot
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public List&lt;T&gt; FindAssets&lt;T&gt;(string relativeDirectory, string extension = null)
-
     where T : Object</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -890,7 +889,6 @@ public Mod[] GetAllMods(bool loadOrder)</code></pre>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public T GetAssetFromMod&lt;T&gt;(string assetName, string modTitle, bool clone, out bool check)
-
     where T : Object</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -1585,7 +1583,6 @@ For example <code>&quot;Assets/Texture.png&quot;</code> to <code>&quot;texture.p
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool TryGetAsset&lt;T&gt;(string name, bool? clone, out T asset)
-
     where T : Object</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -1668,7 +1665,6 @@ Check all names for each mod with the given priority.</p>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public bool TryGetAsset&lt;T&gt;(string[] names, bool? clone, out T asset)
-
     where T : Object</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>

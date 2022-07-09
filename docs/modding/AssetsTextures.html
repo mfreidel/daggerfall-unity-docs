@@ -69,7 +69,166 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="textures">Textures</h1>
 
-<p>PLACEHOLDER</p>
+<h2 id="materials">Materials</h2>
+<p>Unity Materials can be bundled directly inside a mod. The name must be <strong>archive_record-frame.<em>mat</em></strong>, where archive is the index of the original TEXTURE file (TEXTURE.XXX), for example <em>009_1-0.mat</em>.</p>
+<p>Alternatively, individual textures can be imported as loose files from <em>StreamingAssets/Textures</em>. They must be named <strong>archive_record-frame.png</strong> for albedo and <strong>archive_record-frame_MapTag.png</strong> for others (for example <em>009_1-0_Normal.png</em>) where MapTag is one of the following:</p>
+<ul>
+<li>Normal</li>
+<li>Emission</li>
+<li>MetallicGloss</li>
+</ul>
+<p>Xml files can also be used to edit <a href="https://docs.unity3d.com/Manual/StandardShaderMaterialParameterMetallic.html">Metallic</a> and <a href="https://docs.unity3d.com/Manual/StandardShaderMaterialParameterSmoothness.html">Smoothness</a> parameters from loose files. Provide a text file named <strong>archive_record-0.xml</strong> as shown in the example below.</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;properties&gt;
+    &lt;metallic&gt;0.5&lt;/metallic&gt;
+    &lt;smoothness&gt;0.5&lt;/smoothness&gt;
+&lt;/properties&gt;
+</code></pre>
+<h2 id="terrain">Terrain</h2>
+<p>The terrain shader supports <strong>albedo</strong>, <strong>normal</strong> and <strong>metallicgloss</strong> maps for terrain. There are two ways to provide terrain textures:</p>
+<ul>
+<li>Provider a <strong><em>Texture2DArray</em> asset</strong> created with <em>Daggerfall Tools &gt; Texture Array Creator</em> or third party tools. The asset must include all textures of a classic archive and be named after it (i.e. <em>XXX-TexArray</em>).</li>
+<li>Provide all 56 <strong>individual textures</strong> with a mod or loose files to generate a texture array at runtime. All textures must be included and have the same resolution and format. MetallicGloss is an exception as a default map for all the missing textures will be created automatically. If you want to support older platforms (without <em>CopyTextureSupport.DifferentTypes</em>) you also need to enable <em>Read/Write</em> flag on all textures, at the cost of higher memory usage. This flag is always enabled for loose files.</li>
+</ul>
+<h2 id="billboards">Billboards</h2>
+<p>Billboard textures can be imported via dfmods or loose files (<em>StreamingAssets/Textures</em>). In both cases textures must be named <strong>archive_record-frame.png</strong> and, when required, <strong>archive_record-frame_Emission.png</strong>. You must provide textures for all frames in a record. XML files can also be added to customize billboard material.</p>
+<p><em><strong>Archive_Record-0.xml</strong></em></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;info&gt;
+    &lt;renderMode&gt;Cutout&lt;/renderMode&gt;
+    &lt;emission&gt;False&lt;/emission&gt;
+    &lt;uvX&gt;0&lt;/uvX&gt;
+    &lt;uvY&gt;0&lt;/uvY&gt;
+    &lt;scaleX&gt;1&lt;/scaleX&gt;
+    &lt;scaleY&gt;1&lt;/scaleY&gt;
+&lt;/info&gt;
+</code></pre>
+<p>Textures used for <strong>exteriors billboards</strong> (like animals or lights) are placed on a 4096×4096 atlas for each archive, so the total size of textures must not exceed this value. If you don’t provide the entire archive, imported textures are used together with vanilla without issues. XML files only support scale.</p>
+<p><em><strong>Archive_Record-0.xml</strong></em></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;info&gt;
+    &lt;scaleX&gt;1&lt;/scaleX&gt;
+    &lt;scaleY&gt;1&lt;/scaleY&gt;
+&lt;/info&gt;
+</code></pre>
+<p><strong>Mobile billboards</strong>, such as wandering npcs and enemies, requires all textures in a archive to be provided. The following xml files are supported:</p>
+<p><em><strong>Archive.xml</strong></em></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;info&gt;
+    &lt;renderMode&gt;Cutout&lt;/renderMode&gt;
+    &lt;emission&gt;False&lt;/emission&gt;
+&lt;/info&gt;
+</code></pre>
+<p><em><strong>Archive_Record-0.xml</strong></em></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;info&gt;
+    &lt;uvX&gt;0&lt;/uvX&gt;
+    &lt;uvY&gt;0&lt;/uvY&gt;
+    &lt;scaleX&gt;1&lt;/scaleX&gt;
+    &lt;scaleY&gt;1&lt;/scaleY&gt;
+&lt;/info&gt;
+</code></pre>
+<h2 id="ui-images">UI Images</h2>
+<p>IMG and CIF/RCI replacements can be named as follow:</p>
+<ul>
+<li><p>.IMG: <strong>filename.png</strong> (ex: MAP100I0.IMG.png) in <em>StreamingAssets\Textures\Img</em>
+or inside a .dfmod.</p>
+</li>
+<li><p>.CIF, .RCI: <strong>filename_record-frame.png</strong> (ex: INVE16I0.CIF_3-0.png) in <em>StreamingAssets\Textures\CifRci</em>
+or inside a .dfmod.</p>
+</li>
+</ul>
+<h2 id="weapons">Weapons</h2>
+<p>Weapons with metal variations can be named <code>WEAPON\*\*.CIF-Record-Frame\_MetalType</code>, where <code>MetalType</code> is one of following tags:</p>
+<ul>
+<li>Iron</li>
+<li>Steel</li>
+<li>Elven</li>
+<li>Dwarven</li>
+<li>Mithril</li>
+<li>Adamantium</li>
+<li>Ebony</li>
+<li>Orcish</li>
+<li>Daedric</li>
+</ul>
+<h2 id="inventory-items">Inventory Items</h2>
+<p>Inventory items with dye variations can be named <strong>Archive_Record-Frame_DyeColor</strong>, where DyeColor is one of the following tags. Items with default tint (<em>Chain</em> and <em>Silver</em>) can be named <strong>Archive_Record-Frame</strong>.</p>
+<p><strong>Clothing</strong></p>
+<ul>
+<li>Blue</li>
+<li>Grey</li>
+<li>Red</li>
+<li>DarkBrown</li>
+<li>Purple</li>
+<li>LightBrown</li>
+<li>White</li>
+<li>Aquamarine</li>
+<li>Yellow</li>
+<li>Green</li>
+</ul>
+<h3 id="paperdoll">Paperdoll</h3>
+<p><a href="https://www.dfworkshop.net/wp-content/uploads/2019/06/251_32-0_Ebony-with-Mask.png"><img src="https://www.dfworkshop.net/wp-content/uploads/2019/06/251_32-0_Ebony-with-Mask.png" alt=""></a></p>
+<p>Some paperdoll images require a mask, with full opacity on the alpha channel to mark masked area, and trasparency to mark non-masked area as shown in the picture. Maks must be named <em>Name_Mask</em> (where Name is the name of the main texture) and require <strong>Read/Write Enabled</strong> flag to be enabled if provided with a .dfmod. For more informations on paperdoll implementation see <a href="https://www.dfworkshop.net/items-part-3-paper-doll/">Items Part 3 – Paper Doll</a>.</p>
+<p>The position on the paperdoll can be changed with an xml file, with the same name as the texture, providing a rect in pixels with the origin on the top-left corner. The original paperdoll has a resolution of 110×184, which is scaled eight times in Daggerfall Unity to achieve a resolution of 880×1472. The xml file should define the scale on which the rect is based, which allows the game to correctly convert the rect to the actual paperdoll scale, ensuring compatibility with future resolution changes.</p>
+<pre><code>&lt;?xml version\=&quot;1.0&quot;?&gt;
+&lt;info\&gt;
+    &lt;rect scale\=&quot;8&quot;\&gt;
+        &lt;x\&gt;248&lt;/x\&gt;
+        &lt;y\&gt;0&lt;/y\&gt;
+        &lt;width\&gt;400&lt;/width\&gt;
+        &lt;height\&gt;344&lt;/height\&gt;
+    &lt;/rect\&gt;
+&lt;/info\&gt;
+</code></pre>
+<h2 id="hud">HUD</h2>
+<p>Some hud images require additional xml files as shown in the examples below.</p>
+<p><strong>HUD Compass</strong></p>
+<pre><code>    COMPASS.IMG.xml
+
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;info&gt;
+    &lt;width&gt;322&lt;/width&gt;
+    &lt;height&gt;14&lt;/height&gt;
+&lt;/info&gt;
+</code></pre>
+<p><strong>COMPBOX.IMG.xml</strong></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;info&gt;
+    &lt;width&gt;69&lt;/width&gt;
+    &lt;height&gt;17&lt;/height&gt;
+&lt;/info&gt;
+</code></pre>
+<ul>
+<li><strong>Crosshair</strong><br>
+Crosshair.png and Crosshair.xml in <em>StreamingAssets\Textures</em></li>
+</ul>
+<pre><code>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;info&gt;
+    &lt;width&gt;22&lt;/width&gt;
+    &lt;height&gt;22&lt;/height&gt;
+&lt;/info&gt;
+</code></pre>
+<h2 id="cursor">Cursor</h2>
+<p>Cursor can be overriden with a texture provided by mod using <strong>Cursor</strong> texture type and <strong>Read/Write</strong> flag enabled. Import from loose files is not supported.</p>
+<h2 id="transport">Transport</h2>
+<p>Horse and cart textures are, respectively, MRED00I0.CFA and MRED01I0.CFA_._ While the original textures can’t be exported with Daggerfall Imaging, overrides can be provided inside the <em>CifRci</em> folder (ex: <em>MRED00I0.CFA_0-0.png</em>).</p>
+<h2 id="travel-map">Travel Map</h2>
+<p>High resolution overlays can be imported along with the main map texture following the naming <strong>TRAV0I00.IMG-RegionName</strong>. For example, the overlay for the <em>Ilessan Hills</em> region should be named <strong>TRAV0I00.IMG-Ilessan Hills.</strong></p>
+<p>This is the list of region names:</p>
+<pre><code>&quot;Alik'r Desert&quot;, &quot;Dragontail Mountains&quot;, &quot;Glenpoint Foothills&quot;, &quot;Daggerfall Bluffs&quot;,
+&quot;Yeorth Burrowland&quot;, &quot;Dwynnen&quot;, &quot;Ravennian Forest&quot;, &quot;Devilrock&quot;,
+&quot;Malekna Forest&quot;, &quot;Isle of Balfiera&quot;, &quot;Bantha&quot;, &quot;Dak'fron&quot;,
+&quot;Islands in the Western Iliac Bay&quot;, &quot;Tamarilyn Point&quot;, &quot;Lainlyn Cliffs&quot;,
+&quot;Bjoulsae River&quot;, &quot;Wrothgarian Mountains&quot;, &quot;Daggerfall&quot;, &quot;Glenpoint&quot;, &quot;Betony&quot;,
+&quot;Sentinel&quot;, &quot;Anticlere&quot;, &quot;Lainlyn&quot;, &quot;Wayrest&quot;, &quot;Gen Tem High Rock village&quot;,
+&quot;Gen Rai Hammerfell village&quot;, &quot;Orsinium Area&quot;, &quot;Skeffington Wood&quot;,
+&quot;Hammerfell bay coast&quot;, &quot;Hammerfell sea coast&quot;, &quot;High Rock bay coast&quot;,
+&quot;High Rock sea coast&quot;, &quot;Northmoor&quot;, &quot;Menevia&quot;, &quot;Alcaire&quot;, &quot;Koegria&quot;, &quot;Bhoraine&quot;,
+&quot;Kambria&quot;, &quot;Phrygias&quot;, &quot;Urvaius&quot;, &quot;Ykalon&quot;, &quot;Daenia&quot;, &quot;Shalgora&quot;, &quot;Abibon-Gora&quot;,
+&quot;Kairou&quot;, &quot;Pothago&quot;, &quot;Myrkwasa&quot;, &quot;Ayasofya&quot;, &quot;Tigonus&quot;, &quot;Kozanset&quot;, &quot;Satakalaam&quot;,
+&quot;Totambu&quot;, &quot;Mournoth&quot;, &quot;Ephesus&quot;, &quot;Santaki&quot;, &quot;Antiphyllos&quot;, &quot;Bergama&quot;, &quot;Gavaudon&quot;,
+&quot;Tulune&quot;, &quot;Glenumbra Moors&quot;, &quot;Ilessan Hills&quot;, &quot;Cybiades&quot;
+</code></pre>
 </article>
           </div>
           

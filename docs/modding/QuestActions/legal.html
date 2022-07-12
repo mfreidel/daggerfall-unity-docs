@@ -5,17 +5,17 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Quest Actions </title>
+    <title>legal </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Quest Actions ">
+    <meta name="title" content="legal ">
     <meta name="generator" content="docfx 2.59.2.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     
     
@@ -34,8 +34,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -67,18 +67,17 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="quest-actions">Quest Actions</h1>
+<h1 id="legal">legal</h1>
 
-<p>Quest actions have appeared briefly through the examples of quest conditions, but this section documents all the known activities which can take place during a quest task.</p>
-<p>A task may include any number of actions to respond with when its conditions for activation are met. A task may have no explicit actions at all, in which case it serves to remember that one or more conditions have been met.</p>
-<p>Quest actions can be divided into groups for</p>
-<ol>
-<li>Managing inventory</li>
-<li>Managing geography</li>
-<li>Managing characters (PC, NPCs, and foes)</li>
-<li>User interactions</li>
-<li>Managing special quests</li>
-</ol>
+<blockquote>
+<p>Changes the player's legal repute</p>
+</blockquote>
+<pre><code>legal repute nn
+</code></pre>
+<p>This action modifies the legal standing of the PC in the current province, or the province where the quest containing this action was obtained. Positive values increase the PC's repute, while negative numbers decrease it. The change is relative to the PC's present legal standing in the province, not an absolute state.</p>
+<p>_failedQuest_ task:
+legal repute -15</p>
+<p>In this quest fragment, if the PC fails to meet the goals of the quest, his repute in the province loses 15 points.</p>
 </article>
           </div>
           
@@ -87,7 +86,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions/legal.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -114,8 +113,8 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
   </body>
 </html>

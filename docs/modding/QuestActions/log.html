@@ -5,17 +5,17 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Quest Actions </title>
+    <title>log </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Quest Actions ">
+    <meta name="title" content="log ">
     <meta name="generator" content="docfx 2.59.2.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     
     
@@ -34,8 +34,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -67,18 +67,36 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="quest-actions">Quest Actions</h1>
+<h1 id="log">log</h1>
 
-<p>Quest actions have appeared briefly through the examples of quest conditions, but this section documents all the known activities which can take place during a quest task.</p>
-<p>A task may include any number of actions to respond with when its conditions for activation are met. A task may have no explicit actions at all, in which case it serves to remember that one or more conditions have been met.</p>
-<p>Quest actions can be divided into groups for</p>
-<ol>
-<li>Managing inventory</li>
-<li>Managing geography</li>
-<li>Managing characters (PC, NPCs, and foes)</li>
-<li>User interactions</li>
-<li>Managing special quests</li>
-</ol>
+<blockquote>
+<p>Entering messages in the log book</p>
+</blockquote>
+<pre><code>log nnnn step i
+</code></pre>
+<p>This action adds a Qrc message nnnn to the player's log book as the ith entry for this quest. Quest entries number from 0. A log action which reuses an entry number i replaces the previous log entry for that step with the current one.</p>
+<p>Since the PC may undertake several quests simultaneously, the <strong>X-engine</strong> uses the entry number to collect the messages of one quest in the same area of the log book.</p>
+<p>When the quest ends, the log entries added by the quest are removed from the log book.</p>
+<p>The number of active steps a single quest is limited to 10, so i must be between 0 and 9.</p>
+<p>Also note, the number of concurrently active quests is limited to at most 32 quests.</p>
+<p>Message: 1020
+%qdt:
+I have accepted a quest from _qgiver_.</p>
+<p>Message: 1021
+%qdt:
+A friend of _qgiver_ has directed me to __house_.</p>
+<p>Message: 1022
+%qdt:
+I've discovered  _qgiver_'s _item_ might be hidden
+in ___dungeon_.</p>
+<p>--  Quest startup:
+log 1020 step 0</p>
+<p>when clicked _friend_
+log 1021 step 1</p>
+<p>when used _letter_
+log 1022 step 1</p>
+<p>When this quest begins, message 1020 is added to the player's log book as the first message of this quest. Once the PC locates the quest giver's friend, a second message, 1021 is added to the log book. Later, once the PC reads a quest-related letter, this second message is replaced with message 1022.</p>
+<p>See the <code>[remove log step](#changeglobal2)</code> action to obliterate a log book entry.</p>
 </article>
           </div>
           
@@ -87,7 +105,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions/log.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -114,8 +132,8 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
   </body>
 </html>

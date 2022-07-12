@@ -19617,7 +19617,403 @@
       "output": {
         ".html": {
           "relative_path": "modding/QuestActions.html",
-          "hash": "5rR6CN1c0fWclSRk0kFKHe9qnM4/jqn14ZX3AB1MDco="
+          "hash": "XtJ3OTTkK3KWJGuHpcAWAqdiZP2OjsjAPeDgBrX+yC8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/add.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/add.html",
+          "hash": "DjcxncGOe8wLpb+N8FXtUgOu8IXFWSn9+mkAmTlkfZg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/cast.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/cast.html",
+          "hash": "aL0TuF7b44M6khvBFvtyYmNU9Q9qhiodmIg9crMNigI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/change.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/change.html",
+          "hash": "Kbjtb5xHY1VbNW6vNS3PmCle7lCwKdnCcK/+np/m0mM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/clear.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/clear.html",
+          "hash": "JOZh2B2vzVEFd2LPibPHT3zV+lHVEhOvI2sCvxMiEsg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/create.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/create.html",
+          "hash": "cwAK+U7sR3B3MXqV+yRCT/5x7nrH0mNOGJb+LPhCabQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/cure.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/cure.html",
+          "hash": "h0WmiXP/13s6BJuKwTr8K++JdrmPyS/3TDiIWJUYZyc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/destroy.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/destroy.html",
+          "hash": "xIqxRuAPUIZw8X5zgtcepOzg1N/hqkdiqNlP7N75OBo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/dialog.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/dialog.html",
+          "hash": "0Zrw0d4pVYmDt4gQuBaq9tJA8ud7dYf1B9BVQTERSz8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/drop.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/drop.html",
+          "hash": "Xtt0Z02EQvEejYBHfN4FdZ0D8Y9nwZ0SZkAcsV8UKTs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/end.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/end.html",
+          "hash": "WA0OWRTjz1NQNLhldbfy5gCCm0W6FNxSU4NeGj4Bag0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/get.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/get.html",
+          "hash": "4JOvvX9eYKspgNqNBACIwx7u43OlNQlEeBqEkG2P9IE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/give.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/give.html",
+          "hash": "hSAkKSgbF3vgwy3eVDdFtFKtXNKSlDBmInTEoAsPnSM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/hide.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/hide.html",
+          "hash": "5p5DotkKeREPGG+8bX8X4exmHJmVqUe5iD/RyJfuNjM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/legal.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/legal.html",
+          "hash": "1PzjvU8Fq11LOytJM3ZRmn5+6LCAxFtdplxQDvT3bzg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/location.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/location.html",
+          "hash": "22RMAgKQPYx3yrUFknRNRfIXfze/F2oSuK+bBR/32Pw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/log.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/log.html",
+          "hash": "SOiPOCjwzIlmpWkwEO12UBP1SDulvwnB5rQ6yBCcZlw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/make.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/make.html",
+          "hash": "GojOJFAT2fNsQEZBg7/8Bcj9Ng1Gn4D4+m7KhYW9VDM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/mute.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/mute.html",
+          "hash": "9TO3Y1G+KIJYdLVZGZbnOdjFOJDu3fvpOqAxc3zXYy8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/pick.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/pick.html",
+          "hash": "ORBReuBohazINWO+5xBAM7rCENZvg9Cy5qvw7drFEJ8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/place.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/place.html",
+          "hash": "ML74jdgi9F5SQ+zZitKj+kFoLanZ4HjfksXv/jSxXzU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/play.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/play.html",
+          "hash": "iB21DREjEA70rX6FSD6AfgnMTtyp1geGl7LlLT18duM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/prompt.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/prompt.html",
+          "hash": "cZjYUg8cwa1K807zlMv6lD+PKFrXRetdYvqpwCQN4ws="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/remove.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/remove.html",
+          "hash": "0a6QNt124uZVkM10P7aaRaLK3D3PSLkZn7/XhQhb/Tk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/restore.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/restore.html",
+          "hash": "usn7NpDU3CkuDbXbWHeOpgj22UM0pTfrz0PPF/XKIqo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/restrain.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/restrain.html",
+          "hash": "vNGYqsdmIBmHykGXAuk0LAGeu44iZ9wbMv2Fck+U49k="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/reveal.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/reveal.html",
+          "hash": "AHkUAh/ynYJrlI8x1ZpOiZS/s6clxFt7joy4dvuilqE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/rumor.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/rumor.html",
+          "hash": "HqeVVRC9i/X4MjBXBm2V73VVR4Mo+Kr5x4Xfcu3pj8o="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/say.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/say.html",
+          "hash": "hWv9823rQTier3MnsSVRf7sRKsLPthZsNeqtwbJxwdU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/send.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/send.html",
+          "hash": "eXP1ktLTQgDo9kg4G7eOuaF1sDvX28i2NMzNaMGIKIg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/start.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/start.html",
+          "hash": "/n7aXS+mlfreY3SJJgFhXgpFLCbFVt4kqinnlU/Fi2Q="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/stop.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/stop.html",
+          "hash": "SfcwkJsgOYDasIByu9HdO2ft7hUUOWei5Bdln7zegnQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/take.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/take.html",
+          "hash": "ByPw5OHsMxzEiZg+lUp/HzNViJi/+MVOjyXUwsXjNQE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "modding/QuestActions/teleport.md",
+      "output": {
+        ".html": {
+          "relative_path": "modding/QuestActions/teleport.html",
+          "hash": "d9w6hKPsBPT5fY2ar7jcjiJdyTrydm+i5lhUugu8+sE="
         }
       },
       "is_incremental": true,
@@ -19761,7 +20157,7 @@
       "output": {
         ".html": {
           "relative_path": "modding/toc.html",
-          "hash": "Y1U7O2isG/2khxeb2/LkUBFdJtLzPYpBtlhtqUdFavM="
+          "hash": "E1/hWQzt2fZ09O+sFmW8gKFwSRutUGPcSnnDj1O3hYQ="
         }
       },
       "is_incremental": false,
@@ -19792,8 +20188,8 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 27,
-          "skipped_file_count": 27
+          "total_file_count": 60,
+          "skipped_file_count": 60
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,

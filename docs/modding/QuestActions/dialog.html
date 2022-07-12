@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>dialog </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="dialog ">
+    <meta name="generator" content="docfx 2.59.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="dialog">dialog</h1>
+
+<blockquote>
+<p>Managing quest rumors</p>
+</blockquote>
+<pre><code>dialog link for item anItem
+dialog link for person anNPC
+dialog link for location aSite
+dialog link for location aSite person anNPC item anItem
+dialog link for location aSite item anItem
+dialog link for person anNPC item anItem
+</code></pre>
+<p>To tie chatting wih townspeople about current events to a quest, you can add stock dialog replies about quest npcs, items, and places to the replies given to the <em>Any news?</em> query in the dialog screen.</p>
+<p>In addition, you can establish a link between two or more quest resources and dialog entries in the principle picklist of the dialog screen.</p>
+<p>Note that there are two ways to incorporate quest-related information into the dialog screen: the incredibly obvious, and the not so obvious.</p>
+<p>When you create a quest <code>[Item](#items), [Person](#persons), or [Place](#questplaces)</code> adorned with a Qrc text number, this creates an incredibly obvious dialog opportunity, by adding the thing in question to the principle pick-list under the <em>Tell me about</em> dialog tab.</p>
+<p>Such entries generally don't require especially good repute or etiquette on the part of the PC, although townspeople may still refuse to have anything to do with a PC they don't particularly care for.</p>
+<p>But the presence of the entries themselves can give the PC a clue about what might possibly be going on with a quest that is currently in progress.</p>
+<p>To exercise a PC's social skills, and thus to discriminate against PCs who lack them, a quest can silently add stock replies to the <em>Any News</em> responses that a townsperson might say.</p>
+<p>While the Qrc messages adorning quest items, npcs, and places are always available for reply throughout the whole time a quest is active, the stock <em>Any News</em> replies can be added when certain quest milestones occur.</p>
+<p>So a quest may, for example, turn on gossip about the location of a remote dungeon once the PC has made contact with a certain quest npc. Of course, the player may take no heed of the townsperson blabbering on about the goings on in some remote dungeon, but so it goes.</p>
+<p>And the player's repute with the townsperson's affiliations seems to influence whether a quest related rumor pops up, or whether the townie just shines the player on.</p>
+<p>These features can make quest resolution much more challenging that the typical &quot;Fed Ex&quot; escapades. Players often complain that quests using these features are &quot;buggy&quot; because their PC's social skills aren't up to the task of finishing the quest.</p>
+<p>In addition, when you create a dialog link between two quest resources, <strong>X-engine</strong> will arrange to insert a dialog topic about a linked resource, but only after the PC has chatted about another part of the link first.</p>
+<p>Suppose we say</p>
+<pre><code>dialog link for person \_theStooge\_ item \_theRelic\_
+</code></pre>
+<p>during our quest startup.</p>
+<p>In addition to the preceding discussion about rumors, when the time is ripe, the quest can expliciting insert a dialog topic for <em>_theRelic_</em> into the dialog picklist by using the <code>[add dialog](#rumor1)</code> command:</p>
+<pre><code>add dialog for item \_theRelic\_
+</code></pre>
+<p>Now, the next time the PC uses the dialog screen, an entry for <em>_theRelic_</em> will be available for selection. Once the PC selects this entry and the NPC chats about <em>_theRelic_</em>, a new entry will appear in the picklist for <em>_theStooge_</em>, as well as <em>_theRelic_</em>.</p>
+<p>For a linked topic to appear in the dialog screen picklist, its symbol name must appear within the linking dialog Qrc block. That is, the Qrc text bound to _theRelic_ must mention _theStooge_ within its message block or else the linked quest resource (_theStooge_) will never appear as a new topic of conversation.</p>
+<p>If the Qrc message block is subsectioned, the linkage operates independently for each subsection. So, for example, two subsections might have no mention of _theStooge_, but the third does. Only when the third section is displayed to the player will the linked topic be added to the dialog screen.</p>
+<p>Or a different branch of the quest might arrange to reveal the opposite side of the link:</p>
+<pre><code>add dialog for person \_theStooge\_
+</code></pre>
+<p>In this case, the next time the PC uses the dialog screen, an entry for <em>_theStooge_</em> will be available for selection. Once the PC selects this entry and the NPC chats about <em>_theStooge_</em>, a new entry will appear in the picklist for <em>_theRelic_</em>, as well as <em>_theStooge_</em>. Of course, the Qrc message bound to _theStooge_ must mention _theRelic_ for this to occur.</p>
+<p>Read the <em>cure lycanthropy</em> and <em>cure vampirism</em> quests to see how these quest elements can be used.</p>
+<pre><code>dialog link for item anItem
+</code></pre>
+<p>This action adds a stock <em>Any News</em> reply to gossip about the quest item anItem.</p>
+<pre><code>dialog link for person anNPC
+</code></pre>
+<p>This action adds a stock <em>Any News</em> reply to gossip about the quest npc anNPC.</p>
+<pre><code>dialog link for location aSite
+</code></pre>
+<p>This action adds a stock <em>Any News</em> reply to gossip about the quest location aSite.</p>
+<p>If you have several different kinds of quest things to gossip about, you can combine location, person, and item (in that order) with one add dialog for command:</p>
+<pre><code>dialog link for location \_house\_ item \_letter\_
+dialog link for person \_qgiver\_ item \_ring\_
+</code></pre>
+<p>creates one dialog bridge between <em>_house_</em> and <em>_letter_</em> and another bridge between <em>_qgiver_</em> and <em>_ring_</em>.</p>
+<pre><code>dialog link for for location \_store\_ person \_contact\_ item \_gem\_
+</code></pre>
+<p>creates a three-way bridge between <em>_store_</em>, <em>_contact_</em>, and <em>_gem_</em>.</p>
+<p>Note that creating a dialog link with just one quest resource in it has the property of removing that resource from the dialog pick list when the resource has an <em>anyInfo</em> tag, <em>rumors</em> tag, or <em>used</em> tag.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions/dialog.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

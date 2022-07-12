@@ -5,17 +5,17 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Quest Actions </title>
+    <title>play </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Quest Actions ">
+    <meta name="title" content="play ">
     <meta name="generator" content="docfx 2.59.2.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     
     
@@ -34,8 +34,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -67,18 +67,23 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="quest-actions">Quest Actions</h1>
+<h1 id="play">play</h1>
 
-<p>Quest actions have appeared briefly through the examples of quest conditions, but this section documents all the known activities which can take place during a quest task.</p>
-<p>A task may include any number of actions to respond with when its conditions for activation are met. A task may have no explicit actions at all, in which case it serves to remember that one or more conditions have been met.</p>
-<p>Quest actions can be divided into groups for</p>
-<ol>
-<li>Managing inventory</li>
-<li>Managing geography</li>
-<li>Managing characters (PC, NPCs, and foes)</li>
-<li>User interactions</li>
-<li>Managing special quests</li>
-</ol>
+<h2 id="playing-sounds">Playing sounds</h2>
+<pre><code>play sound aSound every time1 minutes time2 times
+play sound aSound time1 time2
+</code></pre>
+<p>This action plays one of the 459 <strong>Daggerfall</strong> sound effects once every time1 game minutes while the task containing the <em>play sound</em> command is active. Specifying time2 doesn't seem to have any effect on the behavior of the command, though.</p>
+<p>Only the first form will accept one of the catalogued names for a sound effect, although the pure number for the effect may be used with either form.</p>
+<p>Every model creature in Daggerfall has three separate sound effects associated with it: <em>distant</em>, <em>nearby</em>, and <em>in combat</em>. Other sound effects include various environmental conditions, like barking dogs, slamming doors, and, of course, <em>Halt! Halt!</em></p>
+<p>There are symbolic names for all the model creature sounds, but I haven't yet completed the environmental catalog, whose interpretation is much more subjective as to what to call the collection of assorted grunts, wheezes, and eerie noises.</p>
+<p>Also, all the sound effects from <strong>TES1, Arena</strong> appear to be present. So if you've missed <strong>Fire Daemons</strong> or <strong>Iron Golems</strong>, you can at least use their respective noises.</p>
+<p>I'll include a proper table of sound names, once the inventory is completed, but for the nonce, please see <em>sounds.src</em> for the catalog of known sound effects.</p>
+<h2 id="playing-video-clips">Playing video clips</h2>
+<pre><code>play video nn
+</code></pre>
+<p>This action plays a prerecorded video clip associated with the main story quest. nn indicates which of the <em>anim00_nn</em>.vid_ clips in the <strong>arena2</strong> directory to use.</p>
+<p>The standard quests from Bethesda mention videos 3, 5-10, 13-15, so 0-2, 4, 11, 12 are either played automatically at certain milestones, like player death or 'bite me', or have never before been seen.</p>
 </article>
           </div>
           
@@ -87,7 +92,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions/play.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -114,8 +119,8 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
   </body>
 </html>

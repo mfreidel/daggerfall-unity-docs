@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>add </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="add ">
+    <meta name="generator" content="docfx 2.59.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="add">add</h1>
+
+<h2 id="adding-a-new-questor">Adding a new questor</h2>
+<pre><code>add anNPC as questor
+</code></pre>
+<p>In guild quests the PC is often given some chore to perform, after which the PC must return to the questor to receive the reward or bonus that successfully completing the quest provides.</p>
+<p>However, <strong>X-engine</strong> allows the NPC playing the questor role to change during the quest itself, which is one way to break the 'FedEx' monotony of questing. Different NPCs can be given responsibility for separate stages or subquests.</p>
+<p>It is possible to adopt more than one NPC as the questor, in case your scenario is set up to have different endings.</p>
+<pre><code>    changeQuestor task:
+        drop _oldNPC_ as questor
+        add _newNPC as questor
+</code></pre>
+<p>shows a quest fragment that hands control of the quest from one NPC (the _oldNPC_) to another (the _newNPC_).</p>
+<h2 id="adding-an-npcs-portrait">Adding an NPC's portrait</h2>
+<pre><code>    add anNPC face
+    add anNPC face saying nnnn
+</code></pre>
+<p>So-called <em>escort quests</em> involve rescuing captured nobles, returning kidnapped children, bodyguarding officials in transit, and the like, usually display the character portrait of the NPC under escort.</p>
+<p>When writing a quest with a suitable escort section in it, we need a way to tell <strong>X-engine</strong> to pin the character portrait of a quest-related person on the screen.</p>
+<p>Optionally, the NPC can make a speech before pinning up a portrait by supplying the number of a Qrc message block.</p>
+<pre><code>    Message: 1011
+      &lt;ce&gt; Oh, thank you so much for rescuing me.
+      &lt;ce&gt; Please take me home.
+
+    when _trappedNPC_ clicked
+        say 1011
+        remove npc _trappedNPC_
+        add _trappedNPC_ face
+</code></pre>
+<p>shows an escort quest fragment where the trapped NPC makes a speech when the PC clicks on the NPC, after which the NPC image is removed from the game world and the character portrait for the NPC is overlaid on the 3D view.</p>
+<p>It is important to remember to use the drop face command at some point during the quest after using the <em>add face</em> so the NPC's image won't be left on the screen when the quest ends.</p>
+<p>Note also, there are other difficulties in continuity with this action. Some permanent NPCs put up portraits that clash with their ostensible gender.</p>
+<p>For example, pinning up the traveling portrait for Cyndassa, the maid in Castle Daggerfall, puts up the picture of a bearded, black haired man with an eye patch.</p>
+<p>Also note, that for randomly rolled NPCs, the travel portrait is automatically associated with the dominant race of a province. So adding a face in Daggerfall province will select a portrait from the collection of Breton faces. While the same NPC in Sentinel province will select a portrait from the collection of Redguard faces.</p>
+<p>If your quest uses the same NPC for more than one escort, (for example, you might want the PC to deliver an NPC to a place and then later on in the quest, take the NPC to a second destination) if the starting province and the destination province are different, the second pick-up of the NPC won't be guaranteed to provide the same travel portrait as the first pick-up did.</p>
+<h2 id="adding-a-foes-portrait">Adding a foe's portrait</h2>
+<pre><code>    add foe aFoe face
+</code></pre>
+<p>Some quests, notably temple quests to retrieve deranged priests, require the PC to injure a quest foe representing the priest to bring him to his senses for return to the temple. In this sort of escort quest, after injuring the foe, its character portrait is pinned on the screen until the PC returns the priest to the temple.</p>
+<p>Those quests use this command to display the enemy's portrait on the screen. As usual, you need to drop the foe's face at some point before ending the quest.</p>
+<h2 id="managing-dialog-entries">Managing dialog entries</h2>
+<pre><code>    add dialog for item anItem
+    add dialog for person anNPC
+    add dialog for location aPlace
+    add dialog for location aPlace item anItem
+    add dialog for location aPlace person anNPC
+    add dialog for person anNPC item anItem
+    add dialog for location aPlace person anNPC item anItem
+</code></pre>
+<p>To tie chatting with townspeople about current events to a quest, you can add stock dialog replies about quest NPCs, items, and places to the replies given to the <em>Any news?</em> query in the dialog screen. See <a href="#Managing-quest-rumors">Managing quest rumors</a> for details.</p>
+<p>You can also add additional entries to the picklist under the <em>Tell me about</em> dialog tab. Note that there are two ways to incorporate quest-related information into the dialog screen: the incredibly obvious, and the not so obvious.</p>
+<p>When you create a quest <code>[Item](#items), [Person](#persons), or [Place](#questplaces)</code> adorned with a Qrc text number, this creates an incredibly obvious dialog opportunity, by adding the thing in question to the principle pick-list under the <em>Tell me about</em> dialog tab.</p>
+<p>Such entries generally don't require especially good repute or etiquette on the part of the PC, although townspeople may still refuse to have anything to do with a PC they don't particularly care for.</p>
+<p>But the presence of the entries themselves can give the PC a clue about what might possibly be going on with a quest that is currently in progress.</p>
+<p>To exercise a PC's social skills, and thus to discriminate against PCs who lack them, a quest can silently add stock replies to the <em>Any News</em> responses that a townsperson might say, as well as create links between quest resources which are logically related to each for the purpose of the quest.</p>
+<p>While the Qrc messages adorning quest items, npcs, and places are always available for reply throughout the whole time a quest is active, the <em>Tell me about</em> dialog entries can be extended when certain quest milestones occur.</p>
+<p>So a quest may, for example, turn on gossip about the location of a remote dungeon once the PC has made contact with a certain quest npc. Of course, the player may take no heed of the townsperson blabbering on about the goings on in some remote dungeon, but so it goes.</p>
+<p>These features can make quest resolution much more challenging that the typical &quot;Fed Ex&quot; escapades. Players often complain that quests using these features are &quot;buggy&quot; because their PC's social skills aren't up to the task of finishing the quest.</p>
+<p>You can add stock dialog replies for any combination of a quest item, npc, or place with one add dialog for command. And you can repeat an add dialog for command as many times as needed to add replies for as many quest things as you need to.</p>
+<p>Read the <em>cure lycanthropy</em> and <em>cure vampirism</em> quests to see how these quest elements can be used.</p>
+<pre><code>add dialog for item anItem
+</code></pre>
+<p>This action adds <em>anItem</em> to the <em>Tell me about</em> dialog picklist and includes the Qrc text block from the item's <em>anyInfo</em> tag. If the item has no <em>anyInfo</em> tag, no entry for the item will be created.</p>
+<p>When the player selects that item from the dialog picklist, the NPC may recite some useful information about the item, depending on how well-respected the PC is with respect to the NPC's affiliations.</p>
+<p>If the item has been linked to another quest resource by the <code>[_dialog link_](#rumor5)</code> command, when the NPC recites the Qrc message from the item's <em>anyInfo</em> tag, the linked quest resource name is added to the dialog pick list, just as though the quest scenario issued an appropriate <em>add dialog</em> command for the linked resource.</p>
+<p>Please note, if you want to use linked dialog entries in a quest, you must first use the <code>[_dialog link_](#rumor5)</code> command to establish the desired relationship before using the <em>add dialog</em> command to update the dialog picklist.</p>
+<pre><code>add dialog for person anNPC
+</code></pre>
+<p>This action adds <em>anNPC</em> to the <em>Tell me about</em> dialog picklist and includes the Qrc text block from the person's <em>anyInfo</em> tag. If the person has no <em>anyInfo</em> tag, no entry for the person will be created.</p>
+<p>If the person has been linked to another quest resource by the <code>[_dialog link_](#rumor5)</code> command, when the NPC recites the Qrc message from the person's <em>anyInfo</em> tag, the linked quest resource name is added to the dialog pick list, just as though the quest scenario issued an appropriate <em>add dialog</em> command for the linked resource.</p>
+<p>Please note, if you want use linked dialog entries in a quest, you must first use the <code>[_dialog link_](#rumor5)</code> command to establish the desired relationship before using the <em>add dialog</em> command to update the dialog picklist.</p>
+<pre><code>add dialog for location aSite
+</code></pre>
+<p>This action adds <em>aSite</em> to the <em>Tell me about</em> dialog picklist and includes the Qrc text block from the place's <em>anyInfo</em> tag. If the place has no <em>anyInfo</em> tag, no entry for the place will be created.</p>
+<p>If the location has been linked to another quest resource by the <code>[_dialog link_](#rumor5)</code> command, when the NPC recites the Qrc message from the place's <em>anyInfo</em> tag, the linked quest resource name is added to the dialog pick list, just as though the quest scenario issued an appropriate <em>add dialog</em> command for the linked resource.</p>
+<p>Please note, if you want use linked dialog entries in a quest, you must first use the <code>[_dialog link_](#rumor5)</code> command to establish the desired relationship before using the <em>add dialog</em> command to update the dialog picklist.</p>
+<p>If you have several different kinds of quest resources to gossip about, you can combine location, person, and item (in that order) with one add dialog for command:</p>
+<pre><code>add dialog for location \_store\_ person \_contact\_ item \_gem\_
+add dialog for location \_house\_ item \_letter\_
+add dialog for person \_qgiver\_ item \_ring\_
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions/add.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

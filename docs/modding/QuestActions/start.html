@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>start </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="start ">
+    <meta name="generator" content="docfx 2.59.2.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="start">start</h1>
+
+<h2 id="starting-other-quests">Starting other quests</h2>
+<pre><code>start quest nnnn mmmm
+</code></pre>
+<p>This action starts up one or more quests from the S000_nnnn_ family of quests. In the existing quests from Bethesda, <em>nnnn</em> and <em>mmmm</em> are always the same number.</p>
+<h2 id="starting-a-task-in-another-quest">Starting a task in another quest</h2>
+<pre><code>start task  aTaskName
+</code></pre>
+<p>It is possible for an event in one quest to interact with an event in a seperate quest by using global tasks.</p>
+<p>When quest <strong>A</strong> assigns actions to a global task number, quest <strong>B</strong> can request the activation of that global task in quest <strong>A</strong>.</p>
+<p>Of course, for this to work out right, the authors of both quests must arrange beforehand which global task number to use to synchronize their quests. And they must also arrange to select a global task number that won't conflict with any other global tasks already in progress.</p>
+<p>A quest that wants to make one of its tasks globally available must declare that task globally:</p>
+<p>variable _synchronize_ global 25
+log 1101 step 2
+start _myClock_
+:
+:</p>
+<p>And a task that wants to activate another quest's actions must declare the same global variable then activate it at the appropriate time.</p>
+<pre><code>variable \_theChase\_ global 25
+
+\_resumeOtherQuest\_ task:
+  clicked \_myNpc\_
+  start task \_theChase\_
+</code></pre>
+<p>which would then start the _synchronize_ step in the other quest.</p>
+<p>Note that there may be more than one other quest listening to the same global variable.</p>
+<p>The main quest uses 0-4, 6-9, 11-14, 16-18, 21, 23, 25, 28-29, 31, 33, 36, and 42-43 for global task numbers.</p>
+<p>The following table documents the function of the global states used by the main quest.</p>
+<p>LiftedCurse</p>
+<p>0</p>
+<p>GothrydGotTotem</p>
+<p>1</p>
+<p>KingOfWormsGotTotem</p>
+<p>2</p>
+<p>GortwogGotTotem</p>
+<p>3</p>
+<p>AkorithiGotTotem</p>
+<p>4</p>
+<p>TookTheCure</p>
+<p>5[1]</p>
+<p>UnderkingGotTotem</p>
+<p>6</p>
+<p>EadwyreGotTotem</p>
+<p>7</p>
+<p>BrisiennaGotTotem</p>
+<p>8</p>
+<p>MedoraGotHorn</p>
+<p>9</p>
+<p>GothrydEnding</p>
+<p>11</p>
+<p>OpenedShapeshifters</p>
+<p>10[1]</p>
+<p>KingOfWormsEnding</p>
+<p>12</p>
+<p>GortwogEnding</p>
+<p>13</p>
+<p>AkorithiEnding</p>
+<p>14</p>
+<p>UnderkingEnding</p>
+<p>16</p>
+<p>EadwyreEnding</p>
+<p>17</p>
+<p>BrisiennaEnding</p>
+<p>18</p>
+<p>UnknownElysanna</p>
+<p>21</p>
+<p>MorgiahSatisfied</p>
+<p>23</p>
+<p>ElysannaSatisfied</p>
+<p>25</p>
+<p>BarenziahSatisfied</p>
+<p>28</p>
+<p>MyniseraSatisfied</p>
+<p>29</p>
+<p>MetLadyBrisienna</p>
+<p>31</p>
+<p>KingOfWormsSatisfied</p>
+<p>33</p>
+<p>FinishedMantellanCrux</p>
+<p>36</p>
+<p>UnknownHelseth</p>
+<p>42</p>
+<p>LysandusSatisfied</p>
+<p>43</p>
+<p>[1]Used by <strong>Werefall</strong></p>
+<p>Presumably the residual numbers 5, 10, 15, 19, 20, 22, 24, 26, 27, 30, 32, 34, 35, 37-41 can be used by any quests you choose to create.</p>
+<p>There are, in fact, 64 global variables. Their current values are stored in consecutive bytes in <em>savevars.dat</em>, beginning at offset 0x34f (0-based).</p>
+<h2 id="starting-a-clock">Starting a clock</h2>
+<pre><code>start timer aClock
+</code></pre>
+<p>This action (re)starts the specified timer.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions/start.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

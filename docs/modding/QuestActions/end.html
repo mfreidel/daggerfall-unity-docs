@@ -5,17 +5,17 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Quest Actions </title>
+    <title>end </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Quest Actions ">
+    <meta name="title" content="end ">
     <meta name="generator" content="docfx 2.59.2.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
     
     
     
@@ -34,8 +34,8 @@
                 <span class="icon-bar"></span>
               </button>
               
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -67,18 +67,19 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="quest-actions">Quest Actions</h1>
+<h1 id="end">end</h1>
 
-<p>Quest actions have appeared briefly through the examples of quest conditions, but this section documents all the known activities which can take place during a quest task.</p>
-<p>A task may include any number of actions to respond with when its conditions for activation are met. A task may have no explicit actions at all, in which case it serves to remember that one or more conditions have been met.</p>
-<p>Quest actions can be divided into groups for</p>
-<ol>
-<li>Managing inventory</li>
-<li>Managing geography</li>
-<li>Managing characters (PC, NPCs, and foes)</li>
-<li>User interactions</li>
-<li>Managing special quests</li>
-</ol>
+<h2 id="ending-the-current-quest">Ending the current quest</h2>
+<pre><code>end quest
+</code></pre>
+<p>Any task may specify that it completes the quest's activity, whether successful or not, by using the end quest command. When the <em>end quest</em> is performed, all quest-related objects (green background) in the player's inventory are removed, other quest resources (Items, Persons, Places, and Foes) are discarded, and the player's log book emptied.</p>
+<p>Every well-written side quest usually has an end to it. Many quests employ the common idiom of a set time to complete the quest in, and self-terminate if the job isn't completed in time.</p>
+<pre><code>Clock \_timeLimit\_ 7.0:0 11.0:0
+
+\_timeLimit\_ task:
+    end quest
+</code></pre>
+<p>specifies a time limit of 7 to 11 days for the quest. If the PC hasn't made good on the quest goal in that time, the quest ends when that clock runs down.</p>
 </article>
           </div>
           
@@ -87,7 +88,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/TheLacus/daggerfall-unity-docs/blob/master/modding/QuestActions/end.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -114,8 +115,8 @@
       </footer>
     </div>
     
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
   </body>
 </html>

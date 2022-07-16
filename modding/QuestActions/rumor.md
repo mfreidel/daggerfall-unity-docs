@@ -2,7 +2,9 @@
 
 > Adding an explicit rumor
 
-    rumor mill nnnn
+```
+rumor mill nnnn
+```
 
 This action adds the Qrc message block nnnn to the set of rumors that an NPC may respond with when asked about _Any News_ in the dialog screen.
 

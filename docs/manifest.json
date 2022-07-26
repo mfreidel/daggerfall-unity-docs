@@ -3897,7 +3897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.DaggerfallMissile.OnCompleteEventHandler.html",
-          "hash": "HxaI6QPJugQzatqaE8MxBAglTj3qfHfbz4UzqK0EoeI="
+          "hash": "LvT/W68HIC1LgM7l6HMUz+VddF+k66GnavHtB9/wFNg="
         }
       },
       "is_incremental": false,
@@ -3909,7 +3909,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.DaggerfallMissile.html",
-          "hash": "J23uE/6DnNistMlTq8omb2gh+GZ7kWrwqmVw+WmY/hI="
+          "hash": "unhtXW2DiaodqEprxOOMRR/gEFRvluJ5q4hcKNDd7NQ="
         }
       },
       "is_incremental": false,
@@ -5121,7 +5121,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.InputManager.Actions.html",
-          "hash": "s1iTrrCHgqoO+q1jSsNILUdpGioXmtc3Cy4kkq1a3fI="
+          "hash": "t5QPwiCulE5Tat4G02Cg3z8FjFuZllOBCUaSWq4syx4="
         }
       },
       "is_incremental": false,
@@ -5133,7 +5133,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.InputManager.AxisActions.html",
-          "hash": "vr9REfUIspQrqbczphUBhnN3GzrwjKdQyCplvhOu0iM="
+          "hash": "MrNuAGV1WTgzf/J0CO0pJCKh93XjmjzwXqRsmCHithw="
         }
       },
       "is_incremental": false,
@@ -5145,7 +5145,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.InputManager.JoystickUIActions.html",
-          "hash": "DDz0oBeRfoc/onUtttnBKwBqcus7ug1zpLh8Lx4QEVI="
+          "hash": "AonZZjd/kpWSHWmwSC1NJTgH4fEXdEnWIQLUrNIzdns="
         }
       },
       "is_incremental": false,
@@ -5157,7 +5157,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.InputManager.KeyBindData_v1.html",
-          "hash": "Rb2yfsc4cjBiwj5GnA3fTqEaCuH6mLt+BEzQTPrsqVE="
+          "hash": "Z2SbE+OxHJCz4Ig0N12jhV4Hzb3av1FgZ4ZbManJb48="
         }
       },
       "is_incremental": false,
@@ -5169,7 +5169,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.InputManager.OnLoadSaveKeyBinds.html",
-          "hash": "4udltwxWsP2Vx7AhIaXj2Fc2jg3NxTPihaMQJq6evLg="
+          "hash": "fcnnapc3MsPAai+31/J3emGqBL/7NyNlDP7NY6zFfc0="
         }
       },
       "is_incremental": false,
@@ -5181,7 +5181,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.InputManager.OnUpdateKeyBind.html",
-          "hash": "8qcfOJZXCJo4tf3/G5LWA37b0XkYOdgA6RkpJoRw/NY="
+          "hash": "51SzlMcRn3HlZtjkSPTaiJEve76qllozki33ZhAnRR8="
         }
       },
       "is_incremental": false,
@@ -5193,7 +5193,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.InputManager.html",
-          "hash": "qfX2ocBcH4QR9ya3uaWPxv0qcTt2tDbDh2UXcn3ilUA="
+          "hash": "fJEZhhZKUPqQVqxqN+9jpXyOGe7j19cj/CZPVHcWRcc="
         }
       },
       "is_incremental": false,
@@ -14529,7 +14529,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallAutomapWindow.html",
-          "hash": "uzqp/ZN6cztH4BiUVF9DxALa+RFODGfhotFbEmoxWPc="
+          "hash": "BYoAyOro+1YjDT4hS9c5g26VyIMWEq7T5gBFHAEgvIg="
         }
       },
       "is_incremental": false,
@@ -14577,7 +14577,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallCharacterSheetWindow.html",
-          "hash": "b6Ao+DP05o33hi8Dprcxa9766BKCUZhoITat5VoZMZ4="
+          "hash": "8NwhZEZXw3boAsTFbcUOHABVVqHZrGFNgwGgenszMrk="
         }
       },
       "is_incremental": false,
@@ -14673,7 +14673,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallExteriorAutomapWindow.html",
-          "hash": "16taLSwGbUxYeretyuWE9UFFlYMhMWVSB3vCt9aAfFU="
+          "hash": "oAOskWQwnJSOaNmSAPtqrFmi16Am46jaev9s5fiyyn0="
         }
       },
       "is_incremental": false,
@@ -14793,7 +14793,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallInventoryWindow.ItemHoverLocation.html",
-          "hash": "4zHTGUDTdSUeKIiGBlg8yo1mszKY4xMK1uKVrEfrCtk="
+          "hash": "VmRxx10bmyIuMrInpZ2uqWPgm6xm2lBdJemh3MVnMIU="
         }
       },
       "is_incremental": false,
@@ -14805,7 +14805,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallInventoryWindow.OnItemHoverHandler.html",
-          "hash": "0LJPcQjbHLFX7iIlvEJw/Cvq5U/UO9QE5v001P87wyE="
+          "hash": "QGstqxDVMxvC0oKkEgKpLEgQwHpa9rrXZbg4Tcuedxw="
         }
       },
       "is_incremental": false,
@@ -14841,7 +14841,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallInventoryWindow.html",
-          "hash": "JaZpnbF/6fszLern2vwFkghL8X1ot6BVhgK39SjhyXQ="
+          "hash": "urUY8f9/5nrTjZDlaoSsuBBMIDWOv2qNgxM0HVXj7fs="
         }
       },
       "is_incremental": false,
@@ -14997,7 +14997,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallPauseOptionsWindow.html",
-          "hash": "wLhPYRxnAq6g1KQE0q4xtLIwdZ92P5F41CQLfrEj3jk="
+          "hash": "JDvpnwdf9gcGsD6sa5c8migDJuxmDd0jCajWUPtJaAY="
         }
       },
       "is_incremental": false,
@@ -15069,7 +15069,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallQuestJournalWindow.html",
-          "hash": "Chwl/WU0+I5OUFGCMRE84hRTz1uF/FVZWOO9TrmiwkE="
+          "hash": "2qR2eg+aMrH0Nqgf8JFhA45JNetqQK2jtkN79vOl4oI="
         }
       },
       "is_incremental": false,
@@ -15117,7 +15117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallRestWindow.OnOnSleepTickEventHandler.html",
-          "hash": "XDrwRP7I0oWG5sj+WUNfW5GSSMY1nHFaelt1V7y0554="
+          "hash": "ScLKwdQrDQwEf3+aQkRsMMYlJh0JGx8yGBlmZkN9SVI="
         }
       },
       "is_incremental": false,
@@ -15129,7 +15129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallRestWindow.OnSleepEndEventHandler.html",
-          "hash": "o21Dy7uzD6lINjxBf8h3aGBv1bPhsB37FFP7jWuCahI="
+          "hash": "rSHLG82i4UomFO5eMBNFesE43GHHxXc4T/DXwnrMLp4="
         }
       },
       "is_incremental": false,
@@ -15153,7 +15153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallRestWindow.html",
-          "hash": "zBQuhPNt77EyHS51u9cKTjaON/WUHaNsAKoX8pcspqE="
+          "hash": "3Ksc8Me8d14NLm/+amBhxTG9Tb/Qm2sDqv6orgiXA4c="
         }
       },
       "is_incremental": false,
@@ -15165,7 +15165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallSpellBookWindow.html",
-          "hash": "ArnJf/c1c481U+tMBOQhE0GyK3vGhWsItZplMeyvve4="
+          "hash": "4hliRscvK7d/dwxOOFoG8YoAa2yGE5KdrxtT6YoC6nw="
         }
       },
       "is_incremental": false,
@@ -15273,7 +15273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallTransportWindow.html",
-          "hash": "4I8tEgW3s1kALViia6i3ncPiYRx7hEj+HE3VJ9tsukg="
+          "hash": "F7UqoEVM032CQSJSmYOTE4Yb7gDCcE+39VcD/GBMLvs="
         }
       },
       "is_incremental": false,
@@ -15285,7 +15285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallTravelMapWindow.TravelMapConsoleCommands.html",
-          "hash": "SXhOHACpTHA/ce0xuI6pnOSoLEgDjxy+IMg9LKajZ2Q="
+          "hash": "OwBZ6Z76jyrf59JRl5RGhYF9Qw5ES6Lx1wvIan242ZI="
         }
       },
       "is_incremental": false,
@@ -15297,7 +15297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallTravelMapWindow.html",
-          "hash": "n1G0O058ey9MGbSBSEHFlowXU8UhjXtt1AV7JamuYrQ="
+          "hash": "NL+gaH1LKLXQa9VsnydpyU/W7/HBebCCeHB7L3sASiQ="
         }
       },
       "is_incremental": false,
@@ -15357,7 +15357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallUnitySaveGameWindow.html",
-          "hash": "hzQi7tCFJP5Hpwm6bai0B7ZSyoJKvVdXhlJKkL6Wcqs="
+          "hash": "2IM7ZAPZLgV1UTbJU8aHRUJUJTHE5RJ/59ASQ2TnfV8="
         }
       },
       "is_incremental": false,
@@ -15393,7 +15393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Game.UserInterfaceWindows.DaggerfallUseMagicItemWindow.html",
-          "hash": "CaPpMqu9Xqm4Lw39CBPUL3NbaGUk8YSLakZZtZIIzPQ="
+          "hash": "x/uAhnG9dOPnxdKJQctfTl3ym+H306noNMGsOkEarjw="
         }
       },
       "is_incremental": false,
@@ -17625,7 +17625,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.SettingsManager.html",
-          "hash": "4iYpgjvf45ZGU8XBueQZnQpQ18bIRIa8oeHiCfjRkfg="
+          "hash": "Kj/ou/EniVIuQ/JkI12XsmBKjQ0wDB2fLCRT5q6Nt90="
         }
       },
       "is_incremental": false,
@@ -18233,6 +18233,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/DaggerfallWorkshop.Utility.AssetInjection.NPCModelRotator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DaggerfallWorkshop.Utility.AssetInjection.NPCModelRotator.html",
+          "hash": "RSe5sCozjyFOFYgtkVnigN1bzXJArGRsm8CYH8kH9Qc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/DaggerfallWorkshop.Utility.AssetInjection.ObjectPositioner.yml",
       "output": {
         ".html": {
@@ -18429,7 +18441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/DaggerfallWorkshop.Utility.AssetInjection.html",
-          "hash": "xZQpVIY1y6XRc4xldx7qcKC4PX2575JsWb2cvsrf3E0="
+          "hash": "gAMHYiAac9SCdEy5NP3PcnxvuVgKtRn6GieTtJSt+Rk="
         }
       },
       "is_incremental": false,
@@ -19461,7 +19473,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "FZAwKjYTjjv90Uun4n8JLAvdqfcT6C5c/wQtnCNudO0="
+          "hash": "YfzjTWYYi19dSDq0MIxtsxEzXS6yGpyhWiuCttkGLyY="
         }
       },
       "is_incremental": false,
@@ -19637,498 +19649,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions.html",
-          "hash": "XtJ3OTTkK3KWJGuHpcAWAqdiZP2OjsjAPeDgBrX+yC8="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/add.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/add.html",
-          "hash": "DjcxncGOe8wLpb+N8FXtUgOu8IXFWSn9+mkAmTlkfZg="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/cast.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/cast.html",
-          "hash": "aL0TuF7b44M6khvBFvtyYmNU9Q9qhiodmIg9crMNigI="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/change.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/change.html",
-          "hash": "Kbjtb5xHY1VbNW6vNS3PmCle7lCwKdnCcK/+np/m0mM="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/clear.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/clear.html",
-          "hash": "JOZh2B2vzVEFd2LPibPHT3zV+lHVEhOvI2sCvxMiEsg="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/create.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/create.html",
-          "hash": "cwAK+U7sR3B3MXqV+yRCT/5x7nrH0mNOGJb+LPhCabQ="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/cure.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/cure.html",
-          "hash": "h0WmiXP/13s6BJuKwTr8K++JdrmPyS/3TDiIWJUYZyc="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/destroy.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/destroy.html",
-          "hash": "xIqxRuAPUIZw8X5zgtcepOzg1N/hqkdiqNlP7N75OBo="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/dialog.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/dialog.html",
-          "hash": "0Zrw0d4pVYmDt4gQuBaq9tJA8ud7dYf1B9BVQTERSz8="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/drop.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/drop.html",
-          "hash": "Xtt0Z02EQvEejYBHfN4FdZ0D8Y9nwZ0SZkAcsV8UKTs="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/end.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/end.html",
-          "hash": "WA0OWRTjz1NQNLhldbfy5gCCm0W6FNxSU4NeGj4Bag0="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/get.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/get.html",
-          "hash": "4JOvvX9eYKspgNqNBACIwx7u43OlNQlEeBqEkG2P9IE="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/give.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/give.html",
-          "hash": "hSAkKSgbF3vgwy3eVDdFtFKtXNKSlDBmInTEoAsPnSM="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/hide.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/hide.html",
-          "hash": "5p5DotkKeREPGG+8bX8X4exmHJmVqUe5iD/RyJfuNjM="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/legal.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/legal.html",
-          "hash": "1PzjvU8Fq11LOytJM3ZRmn5+6LCAxFtdplxQDvT3bzg="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/location.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/location.html",
-          "hash": "22RMAgKQPYx3yrUFknRNRfIXfze/F2oSuK+bBR/32Pw="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/log.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/log.html",
-          "hash": "SOiPOCjwzIlmpWkwEO12UBP1SDulvwnB5rQ6yBCcZlw="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/make.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/make.html",
-          "hash": "GojOJFAT2fNsQEZBg7/8Bcj9Ng1Gn4D4+m7KhYW9VDM="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/mute.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/mute.html",
-          "hash": "9TO3Y1G+KIJYdLVZGZbnOdjFOJDu3fvpOqAxc3zXYy8="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/pick.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/pick.html",
-          "hash": "ORBReuBohazINWO+5xBAM7rCENZvg9Cy5qvw7drFEJ8="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/place.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/place.html",
-          "hash": "ML74jdgi9F5SQ+zZitKj+kFoLanZ4HjfksXv/jSxXzU="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/play.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/play.html",
-          "hash": "iB21DREjEA70rX6FSD6AfgnMTtyp1geGl7LlLT18duM="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/prompt.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/prompt.html",
-          "hash": "cZjYUg8cwa1K807zlMv6lD+PKFrXRetdYvqpwCQN4ws="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/remove.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/remove.html",
-          "hash": "0a6QNt124uZVkM10P7aaRaLK3D3PSLkZn7/XhQhb/Tk="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/restore.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/restore.html",
-          "hash": "usn7NpDU3CkuDbXbWHeOpgj22UM0pTfrz0PPF/XKIqo="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/restrain.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/restrain.html",
-          "hash": "vNGYqsdmIBmHykGXAuk0LAGeu44iZ9wbMv2Fck+U49k="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/reveal.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/reveal.html",
-          "hash": "AHkUAh/ynYJrlI8x1ZpOiZS/s6clxFt7joy4dvuilqE="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/rumor.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/rumor.html",
-          "hash": "HqeVVRC9i/X4MjBXBm2V73VVR4Mo+Kr5x4Xfcu3pj8o="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/say.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/say.html",
-          "hash": "hWv9823rQTier3MnsSVRf7sRKsLPthZsNeqtwbJxwdU="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/send.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/send.html",
-          "hash": "eXP1ktLTQgDo9kg4G7eOuaF1sDvX28i2NMzNaMGIKIg="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/start.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/start.html",
-          "hash": "/n7aXS+mlfreY3SJJgFhXgpFLCbFVt4kqinnlU/Fi2Q="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/stop.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/stop.html",
-          "hash": "SfcwkJsgOYDasIByu9HdO2ft7hUUOWei5Bdln7zegnQ="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/take.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/take.html",
-          "hash": "ByPw5OHsMxzEiZg+lUp/HzNViJi/+MVOjyXUwsXjNQE="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestActions/teleport.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestActions/teleport.html",
-          "hash": "d9w6hKPsBPT5fY2ar7jcjiJdyTrydm+i5lhUugu8+sE="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestCompiling.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestCompiling.html",
-          "hash": "f2nYQc2X1Gp6CwW2GLk/G3ilKyA6eVHaqKYJ+/tRa4s="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestConditions.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestConditions.html",
-          "hash": "LIwjkt/NPVExhZCPHKptOAGDQglOEc9aPBRi3Di4+UM="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestOrganization.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestOrganization.html",
-          "hash": "MY/Ct0q9phSkO/viFqP7h2LsmYHRjBRvTMs4GFXZXQ8="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestPitfalls.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestPitfalls.html",
-          "hash": "sg1HgHnfcBvG00gpTU8KO6v8/H+ToI7DPNLPRRV19GE="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestReusingElements.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestReusingElements.html",
-          "hash": "ZnTb/fIkV3I5HCGvseVTSWIvrcACf1mw8awycNQ4f6w="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestSamples.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestSamples.html",
-          "hash": "lt7kMkMNrV+V5x5CbDe2jEmEyfhm/JPQ79BYk0NhQYY="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "modding/QuestWriting.md",
-      "output": {
-        ".html": {
-          "relative_path": "modding/QuestWriting.html",
-          "hash": "tScEWEsl385ZeEpdsxaZ8cgfNknsdTB+SogXY0Q2Tr8="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "modding/Scripting.md",
       "output": {
         ".html": {
@@ -20181,7 +19701,7 @@
       "output": {
         ".html": {
           "relative_path": "modding/toc.html",
-          "hash": "E1/hWQzt2fZ09O+sFmW8gKFwSRutUGPcSnnDj1O3hYQ="
+          "hash": "azbOvgnfH4ph4hiDHq60qCxQZ9hASbDCF2RaL53r7Ec="
         }
       },
       "is_incremental": false,
@@ -20212,14 +19732,14 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 60,
-          "skipped_file_count": 60
+          "total_file_count": 19,
+          "skipped_file_count": 19
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 1620,
-          "skipped_file_count": 1577
+          "total_file_count": 1621,
+          "skipped_file_count": 1592
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
